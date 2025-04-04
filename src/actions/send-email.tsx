@@ -8,7 +8,7 @@ const resend = new Resend('re_TUrut194_FsZxPP1yJcNZbB17Lm331S1y')
 export async function SendEmail(data: FormSchema) {
   const result = await resend.emails.send({
     from: 'info@lealpaversllc.com',
-    to: 'yunoffyt@gmail.com',
+    to: 'info@lealpaversllc.com',
     subject: 'New Contact',
     react: (
       <EmailTemplate
