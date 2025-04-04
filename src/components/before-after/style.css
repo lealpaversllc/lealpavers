@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+input::-webkit-slider-thumb {
+  @apply appearance-none w-1 cursor-pointer bg-white/80;
+  height: var(--wrapper-height);
+}
+
+input::-moz-range-thumb {
+  @apply appearance-none w-1 cursor-pointer bg-white/80 border-none rounded-none;
+  height: var(--wrapper-height);
+}
