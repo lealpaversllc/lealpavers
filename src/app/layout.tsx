@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: 'Leal Pavers',
     images: [
       {
-        url: 'https://lealpaversllc.com/assets/logo.svg',
+        url: 'https://lealpaversllc.com/og.png',
         width: 215,
         height: 105,
         alt: 'Image of Leal Pavers services',
