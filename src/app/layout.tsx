@@ -14,6 +14,25 @@ const poppinsSans = Poppins({
 
 export const metadata: Metadata = {
   title: 'Leal Pavers',
+  description:
+    'Transform your space with professional services from Leal Pavers.',
+  openGraph: {
+    title: 'Leal Pavers',
+    description:
+      'Transform your space with professional services from Leal Pavers.',
+    url: 'https://lealpaversllc.com',
+    siteName: 'Leal Pavers',
+    images: [
+      {
+        url: 'https://lealpaversllc.com/assets/logo.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Image of Leal Pavers services',
+      },
+    ],
+    locale: 'en',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({
