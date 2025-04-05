@@ -1,5 +1,7 @@
 import './globals.css'
 
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 
@@ -48,6 +50,8 @@ export default function RootLayout({
         <Header />
         {children}
         <Toaster />
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )
