@@ -3,12 +3,14 @@ import Image from 'next/image'
 
 import useMediaQuery from '@/hooks/use-media-query'
 
+import { Skeleton } from './ui/skeleton'
+
 export function Rating() {
   const windowSize = useMediaQuery()
   const windowWidth = windowSize?.[0]
 
   if (!windowWidth) {
-    return null
+    return <Skeleton className="h-[600px] w-full" />
   }
 
   return (

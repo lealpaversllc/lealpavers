@@ -30,7 +30,7 @@ export function Card({
             alt="shoes"
             width={600}
             height={600}
-            className="h-full w-full scale-105 rounded-lg object-cover transition-all duration-300 group-hover:scale-100"
+            className="h-[600px] w-[600px] scale-105 rounded-lg object-cover transition-all duration-300 group-hover:scale-100"
           />
         </figure>
         <div className="to-yellow-leal/30 absolute top-0 left-0 h-full w-full from-zinc-900/10 via-zinc-900/10 transition-all duration-300 group-hover:bg-gradient-to-b" />

@@ -2,13 +2,14 @@
 import useMediaQuery from '@/hooks/use-media-query'
 
 import { Card } from './ui/card'
+import { Skeleton } from './ui/skeleton'
 
 export function Service() {
   const windowSize = useMediaQuery()
   const windowWidth = windowSize?.[0]
 
   if (!windowWidth) {
-    return null
+    return <Skeleton className="h-[600px] w-full" />
   }
 
   const services = [

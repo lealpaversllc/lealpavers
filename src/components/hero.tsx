@@ -8,6 +8,8 @@ import { useRef, useState } from 'react'
 import useMediaQuery from '@/hooks/use-media-query'
 import { cn } from '@/lib/utils'
 
+import { Skeleton } from './ui/skeleton'
+
 const images = [
   '/assets/hero/01.png',
   '/assets/hero/02.png',
@@ -28,7 +30,7 @@ export function Hero() {
   const windowWidth = windowSize?.[0]
 
   if (!windowWidth) {
-    return null
+    return <Skeleton className="h-[600px] w-full" />
   }
 
   const handleKeyLeft = () => {
@@ -130,7 +132,13 @@ export function Hero() {
                     ease: 'easeIn',
                   }}
                 >
-                  <Image alt="" src={src} width={800} height={627} />
+                  <Image
+                    alt=""
+                    src={src}
+                    width={800}
+                    height={627}
+                    priority={i === 0}
+                  />
                 </motion.div>
               ))
             : itemsRef.current.map((src, i) => (

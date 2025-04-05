@@ -12,6 +12,7 @@ import { cn } from '@/lib/utils'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { ScrollArea } from './ui/scroll-area'
+import { Skeleton } from './ui/skeleton'
 import { Textarea } from './ui/textarea'
 
 const formSchema = z.object({
@@ -31,6 +32,8 @@ export function Contact() {
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
   })
+
+  if (!windowWidth) return <Skeleton className="h-[600px] w-full" />
 
   async function handleSubmitForm(data: FormSchema) {
     const result = await SendEmail(data)
@@ -61,7 +64,7 @@ export function Contact() {
         <ScrollArea
           className={cn(
             'bg-red-leal flex w-full flex-col gap-3 p-14 sm:w-[598px] sm:rounded-xl',
-            (windowWidth as number) > 1024 && 'max-h-[811px]',
+            windowWidth > 1024 && 'max-h-[811px]',
           )}
         >
           <h3 className="bg-yellow-leal mb-4 w-fit rounded-xl p-7 py-2 text-3xl font-bold">
