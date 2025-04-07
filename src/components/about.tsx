@@ -44,8 +44,8 @@ export function About() {
           <p className="text-center text-3xl font-semibold text-white [&_strong]:font-semibold [&_strong]:text-[#FFD722]">
             We <strong>specialize</strong> in a wide range of services, from
             paving to renovations. Our goal is to <strong>deliver</strong> the
-            best quality to our customers, combined with{' '}
-            <strong>agility</strong> in completing our work.
+            best quality to our customers, combined with the{' '}
+            <strong>commitment</strong> in completing our work.
           </p>
         </ScrollElement>
         <div className="flex w-full justify-around">
