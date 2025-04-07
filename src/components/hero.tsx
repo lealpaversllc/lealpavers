@@ -44,7 +44,10 @@ export function Hero() {
   }
 
   return (
-    <section className="bg-red-leal relative w-full bg-[url(/assets/hero/background-red.png)] bg-cover bg-no-repeat shadow-md">
+    <section
+      id="home"
+      className="bg-red-leal relative w-full bg-[url(/assets/hero/background-red.png)] bg-cover bg-no-repeat shadow-md"
+    >
       <div className="relative mx-auto h-[427px] w-full overflow-hidden sm:h-[627px]">
         <div className="absolute z-30 flex h-full w-full flex-col items-center max-md:px-4">
           <div className="relative container flex h-full items-center justify-between">

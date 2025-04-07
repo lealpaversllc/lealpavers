@@ -172,7 +172,7 @@ body {
   }
 }
 
-#home {
+#header {
   position: fixed;
   z-index: 50;
 }
