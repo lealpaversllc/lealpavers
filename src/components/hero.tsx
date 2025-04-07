@@ -44,7 +44,7 @@ export function Hero() {
   }
 
   return (
-    <section className="bg-red-leal relative w-full bg-[url(/assets/hero/background-red.png)] bg-cover bg-no-repeat">
+    <section className="bg-red-leal relative w-full bg-[url(/assets/hero/background-red.png)] bg-cover bg-no-repeat shadow-md">
       <div className="relative mx-auto h-[427px] w-full overflow-hidden sm:h-[627px]">
         <div className="absolute z-30 flex h-full w-full flex-col items-center max-md:px-4">
           <div className="relative container flex h-full items-center justify-between">
@@ -74,13 +74,13 @@ export function Hero() {
             </div>
             <button
               onClick={handleKeyLeft}
-              className="z-50 flex size-[48px] items-center justify-center rounded-full border border-white/50 bg-white/20 text-white/70 hover:cursor-pointer hover:border-white hover:bg-white/50 hover:text-white"
+              className="z-40 flex size-[48px] items-center justify-center rounded-full border border-white/50 bg-white/20 text-white/70 hover:cursor-pointer hover:border-white hover:bg-white/50 hover:text-white"
             >
               <ArrowLeft size={20} />
             </button>
             <button
               onClick={handleKeyRight}
-              className="z-50 flex size-[48px] items-center justify-center rounded-full border border-white/50 bg-white/20 text-white/70 hover:cursor-pointer hover:border-white hover:bg-white/50 hover:text-white"
+              className="z-40 flex size-[48px] items-center justify-center rounded-full border border-white/50 bg-white/20 text-white/70 hover:cursor-pointer hover:border-white hover:bg-white/50 hover:text-white"
             >
               <ArrowRight size={20} />
             </button>

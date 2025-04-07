@@ -67,6 +67,24 @@ export function Service() {
         { src: '/assets/services/coping-and-tile/03.jpeg' },
       ],
     },
+    {
+      title: 'Retaining Wall',
+      src: '/assets/services/root/retaining-wall.jpeg',
+      gallery: [
+        { src: '/assets/services/retaining-wall/01.jpeg' },
+        { src: '/assets/services/retaining-wall/02.jpeg' },
+        { src: '/assets/services/retaining-wall/03.jpeg' },
+      ],
+    },
+    {
+      title: 'Paver Sealing',
+      src: '/assets/services/root/paver-sealing.jpeg',
+      gallery: [
+        { src: '/assets/services/paver-sealing/01.jpeg' },
+        { src: '/assets/services/paver-sealing/02.jpeg' },
+        { src: '/assets/services/paver-sealing/03.jpeg' },
+      ],
+    },
   ]
 
   return (
@@ -76,7 +94,7 @@ export function Service() {
     >
       <div className="container py-10 max-md:px-4">
         <h2 className="text-red-leal text-3xl font-bold">Our Services</h2>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
           {services.map((item) => (
             <Card
               key={item.src}

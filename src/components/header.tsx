@@ -23,8 +23,8 @@ export function Header() {
       <div
         id="home"
         className={cn(
-          'bg-red-leal z-50 flex h-fit w-full flex-col items-center transition-transform',
-          openMenu && 'fixed h-screen w-full',
+          'bg-red-leal fixed z-50 flex h-fit w-full flex-col items-center transition-transform',
+          openMenu && 'h-screen w-full',
         )}
       >
         <div className="container flex w-full items-center justify-between max-md:px-5">

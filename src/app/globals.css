@@ -171,3 +171,8 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+#home {
+  position: fixed;
+  z-index: 50;
+}
