@@ -129,7 +129,10 @@ export function Header() {
   }
 
   return (
-    <div id="home" className="bg-red-leal flex w-full flex-col items-center">
+    <div
+      id="nav-bar"
+      className="bg-red-leal fixed flex w-full flex-col items-center"
+    >
       <div className="container flex items-center justify-between">
         <Image
           alt=""
