@@ -41,7 +41,7 @@ export function Card({
           </h1>
           <button
             onClick={() => setSheet(true)}
-            className="flex gap-1 text-base font-normal text-blue-600 opacity-100 transition-all duration-300 outline-none group-hover:translate-y-0 group-hover:opacity-100 md:translate-y-2 md:pt-2 md:opacity-0 dark:text-white"
+            className="flex gap-1 text-base font-normal text-white opacity-100 transition-all duration-300 outline-none group-hover:translate-y-0 group-hover:opacity-100 md:translate-y-2 md:pt-2 md:opacity-0 dark:text-white"
           >
             View more
             <span>
