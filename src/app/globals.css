@@ -172,7 +172,7 @@ body {
   }
 }
 
-#header {
+#nav-bar {
   position: fixed;
   z-index: 50;
 }

@@ -21,7 +21,7 @@ export function Header() {
   if (windowWidth < 768) {
     return (
       <div
-        id="header"
+        id="nav-bar"
         className={cn(
           'bg-red-leal fixed z-50 flex h-fit w-full flex-col items-center transition-transform',
           openMenu && 'h-screen w-full',
