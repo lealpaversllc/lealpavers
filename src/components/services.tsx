@@ -112,7 +112,7 @@ export function Service() {
           </h3>
           <p className="text-center text-white">
             Driveway - Pool Deck - Sidewalk - Retaining Wall - Patio - Repair -
-            Stairs
+            Stairs - Paver Sealing - Coping and Tile - Paver Cleaning
           </p>
         </div>
       </div>
