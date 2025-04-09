@@ -35,13 +35,13 @@ export function Card({
           />
         </figure>
         <div className="to-yellow-leal/30 absolute top-0 left-0 h-full w-full from-zinc-900/10 via-zinc-900/10 transition-all duration-300 group-hover:bg-gradient-to-b" />
-        <article className="absolute bottom-0 space-y-2 p-4 transition-all duration-300 group-hover:bottom-0 md:-bottom-10">
+        <article className="absolute bottom-0 space-y-2 p-4 transition-all duration-300">
           <h1 className="text-2xl font-semibold text-white capitalize">
             {title}
           </h1>
           <button
             onClick={() => setSheet(true)}
-            className="flex gap-1 text-base font-normal text-white opacity-100 transition-all duration-300 outline-none group-hover:translate-y-0 group-hover:opacity-100 md:translate-y-2 md:pt-2 md:opacity-0 dark:text-white"
+            className="flex gap-1 text-base font-normal text-white opacity-100 transition-all duration-300 outline-none md:pt-2 dark:text-white"
           >
             View more
             <span>
