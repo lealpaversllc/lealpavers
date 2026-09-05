@@ -1,18 +1,18 @@
 export const heroSlides = [
   {
-    desktop: '/assets/hero/01.webp',
-    mobile: '/assets/hero/mobile/01.webp',
-    alt: 'Paver driveway installed in front of a Fort Myers home',
+    desktop: '/assets/hero/firepit.webp',
+    mobile: '/assets/hero/mobile/firepit.webp',
+    alt: 'Round fire pit clad in stacked stone with a travertine cap',
   },
   {
-    desktop: '/assets/hero/02.webp',
-    mobile: '/assets/hero/mobile/02.webp',
-    alt: 'Paver pool deck finished around a screened pool',
+    desktop: '/assets/hero/water-feature.webp',
+    mobile: '/assets/hero/mobile/water-feature.webp',
+    alt: 'Stone water feature and built-in bench on a travertine patio',
   },
   {
-    desktop: '/assets/hero/03.webp',
-    mobile: '/assets/hero/mobile/03.webp',
-    alt: 'Paver walkway and landscaping along a home entrance',
+    desktop: '/assets/hero/pool.webp',
+    mobile: '/assets/hero/mobile/pool.webp',
+    alt: 'Pool edged in travertine paving beside a planted border',
   },
 ]
 

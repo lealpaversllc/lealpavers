@@ -56,9 +56,17 @@ export function Hero() {
           })}
         </div>
 
+        {/* Two scrims: one from the left, one from the bottom. The copy sits
+            bottom-left, so together they keep it legible over any slide —
+            the previous single left gradient faded out under the headline on
+            bright photos. */}
         <div
           aria-hidden
-          className="from-brand-900/85 via-brand-900/30 absolute inset-0 z-10 bg-gradient-to-r to-transparent"
+          className="from-brand-900/90 via-brand-900/45 absolute inset-0 z-10 bg-gradient-to-r to-transparent"
+        />
+        <div
+          aria-hidden
+          className="from-brand-900/85 via-brand-900/25 absolute inset-0 z-10 bg-gradient-to-t to-transparent"
         />
 
         {/* Overlay */}

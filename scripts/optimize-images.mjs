@@ -25,6 +25,8 @@ const RETIRED = [
   /hero\/background-red\./,
   /hero\/staircase-on-logo\./,
   /hero\/rating(-mobile)?\./,
+  // Superseded by the firepit / water-feature / pool slides.
+  /hero\/(mobile\/)?0[123]\./,
 ]
 
 /**
