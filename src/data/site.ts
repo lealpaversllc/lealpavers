@@ -12,8 +12,8 @@ export const site = {
   shortDescription:
     'Paver installation, repair and sealing in Raleigh, North Carolina.',
   description:
-    'Leal Pavers is a Raleigh paving and landscaping company specializing in driveways, walkways, pool decks, retaining walls, stairs, paver repair and sealing. Over 7 years of experience and 150+ customers served across the Triangle and central North Carolina. Free quotes.',
-  founded: 2018,
+    'Leal Pavers is a Raleigh paving and landscaping company specializing in driveways, walkways, pool decks, retaining walls, stairs, paver repair and sealing. Over 10 years of experience and 150+ customers served across the Triangle and central North Carolina. Free quotes.',
+  founded: 2016,
 
   phone: {
     display: '(252) 363-3298',

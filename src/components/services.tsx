@@ -9,7 +9,7 @@ export function Service() {
         <SectionHeading
           eyebrow="What we do"
           title="Our Services"
-          lead="From a single repair to a full driveway rebuild — installed by a crew that has been doing this for over seven years."
+          lead="From a single repair to a full driveway rebuild — installed by a crew that has been doing this for over ten years."
         />
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
