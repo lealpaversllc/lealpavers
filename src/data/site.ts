@@ -28,7 +28,25 @@ export const site = {
     regionName: 'North Carolina',
     country: 'US',
     label: 'Raleigh, NC',
-    note: 'We serve the entire region, contact us to confirm.',
+    note: 'Serving the Triangle area in North Carolina.',
+    /**
+     * Towns the crew covers. Drives `areaServed` in the LocalBusiness markup,
+     * which is what a "pavers near me" search reads.
+     */
+    serves: [
+      'Raleigh',
+      'Durham',
+      'Chapel Hill',
+      'Cary',
+      'Apex',
+      'Morrisville',
+      'Wake Forest',
+      'Holly Springs',
+      'Fuquay-Varina',
+      'Garner',
+      'Knightdale',
+      'Clayton',
+    ],
   },
 
   // Canonical profile URLs: the share links carried `mibextid`/`igsh`

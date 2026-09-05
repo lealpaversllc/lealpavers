@@ -36,14 +36,14 @@ export function StructuredData() {
       addressRegion: site.area.region,
       addressCountry: site.area.country,
     },
-    areaServed: {
+    areaServed: site.area.serves.map((town) => ({
       '@type': 'City',
-      name: site.area.city,
+      name: town,
       containedInPlace: {
         '@type': 'State',
         name: site.area.regionName,
       },
-    },
+    })),
     sameAs: site.socials.map((social) => social.href),
     aggregateRating: {
       '@type': 'AggregateRating',
