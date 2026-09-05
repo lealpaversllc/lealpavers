@@ -8,7 +8,15 @@
  *   node scripts/optimize-images.mjs
  */
 import { existsSync } from 'node:fs'
-import { mkdir, readdir, rename, rm, stat, writeFile } from 'node:fs/promises'
+import {
+  mkdir,
+  readdir,
+  readFile,
+  rename,
+  rm,
+  stat,
+  writeFile,
+} from 'node:fs/promises'
 import { dirname, join, relative } from 'node:path'
 
 import sharp from 'sharp'
@@ -86,6 +94,56 @@ function slantMask(width, height) {
   )
 }
 
+/**
+ * Service cards are 400px tall but only ~282px wide on desktop, so a
+ * landscape gallery photo has to be scaled up ~1.85x by `object-cover` to
+ * fill them — which is what made the covers look soft. Cards therefore get
+ * their own square crop, sized for a 2x screen.
+ */
+const COVER_SIZE = 1100
+const COVER_SUFFIX = '-cover.webp'
+/** Sources that exist only to be card covers: no full-size version is published. */
+const COVER_ONLY = /services\/root\//
+const SERVICES_DATA = 'src/data/services.ts'
+
+/**
+ * src/data/services.ts stays the single source of truth: every `cover:`
+ * ending in `-cover.webp` is rendered from the gallery photo of the same
+ * name, so changing a cover in the data file is all that is needed.
+ */
+async function buildCovers(sources) {
+  const data = await readFile(SERVICES_DATA, 'utf8')
+  const urls = [...data.matchAll(/cover:\s*'([^']+-cover\.webp)'/g)].map(
+    (match) => match[1],
+  )
+
+  let total = 0
+
+  for (const url of urls) {
+    const rel = url.replace(/^\//, '')
+    const base = rel.slice(0, -COVER_SUFFIX.length)
+    const source = sources.find(
+      (file) => relative(SOURCE, file).replace(RASTER, '') === base,
+    )
+    if (!source) throw new Error(`No source image for cover ${url}`)
+
+    const target = join(PUBLIC, rel)
+    await mkdir(dirname(target), { recursive: true })
+    await sharp(source)
+      // Centre, not 'attention': the entropy crop wandered off the subject
+      // (it framed the Retaining Wall card on the pool screen behind it).
+      .resize(COVER_SIZE, COVER_SIZE, { fit: 'cover', position: 'centre' })
+      .webp({ quality: 78, effort: 6 })
+      .toFile(target)
+
+    const size = (await stat(target)).size
+    total += size
+    console.log(`${rel.padEnd(48)} ${kb(size).padStart(18)}  (cover)`)
+  }
+
+  return total
+}
+
 async function walk(dir) {
   const entries = await readdir(dir, { withFileTypes: true })
   const out = []
@@ -137,6 +195,8 @@ async function main() {
       continue
     }
 
+    if (COVER_ONLY.test(rel)) continue
+
     const target = join(PUBLIC, rel).replace(RASTER, '.webp')
     await mkdir(dirname(target), { recursive: true })
 
@@ -175,6 +235,8 @@ async function main() {
     const stale = join(PUBLIC, rel)
     if (existsSync(stale)) await rm(stale)
   }
+
+  after += await buildCovers(sources)
 
   await writeFile(
     join(SOURCE, 'README.md'),

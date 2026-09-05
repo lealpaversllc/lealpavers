@@ -24,7 +24,9 @@ export function ServiceCard({ service }: { service: Service }) {
           src={service.cover}
           alt={service.coverAlt}
           fill
-          sizes="(min-width: 1280px) 22vw, (min-width: 640px) 46vw, 92vw"
+          // The cover is a square crop in a 400px-tall box, so the browser
+          // needs a wider file than the card's own width at every breakpoint.
+          sizes="(min-width: 1280px) 400px, (min-width: 640px) 50vw, 100vw"
           className="ease-soft object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div
@@ -69,7 +71,7 @@ export function ServiceCard({ service }: { service: Service }) {
                     src={photo.src}
                     alt={photo.alt}
                     fill
-                    sizes="(min-width: 640px) 36rem, 100vw"
+                    sizes="(min-width: 640px) 768px, 100vw"
                     className="object-cover"
                   />
                 </figure>

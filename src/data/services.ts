@@ -13,7 +13,7 @@ export const services: Service[] = [
     title: 'Parking Lot',
     description:
       'Durable paver parking areas built to carry daily traffic without rutting or settling.',
-    cover: '/assets/services/root/parking-loot.webp',
+    cover: '/assets/services/root/parking-loot-cover.webp',
     coverAlt: 'Paver parking lot laid in a herringbone pattern',
     gallery: [
       {
@@ -35,7 +35,7 @@ export const services: Service[] = [
     title: 'Driveway and Walkway',
     description:
       'Driveways and front walkways that lift a home’s curb appeal and last for decades.',
-    cover: '/assets/services/root/driveway-and-walkway.webp',
+    cover: '/assets/services/root/driveway-and-walkway-cover.webp',
     coverAlt: 'Paver driveway leading up to a home',
     gallery: [
       {
@@ -57,7 +57,7 @@ export const services: Service[] = [
     title: 'Stairs',
     description:
       'Paver steps and landings cut and set for even risers and safe footing.',
-    cover: '/assets/services/root/stairs.webp',
+    cover: '/assets/services/root/stairs-cover.webp',
     coverAlt: 'Paver staircase with a stone-capped landing',
     gallery: [
       {
@@ -81,7 +81,7 @@ export const services: Service[] = [
       'Slip-resistant pool decks that stay cool underfoot and drain properly.',
     // Cover shares the newest gallery photo. Swapping a photo means a new
     // filename, never a new file at an old path: /_next/image caches by URL.
-    cover: '/assets/services/pool-deck/04.webp',
+    cover: '/assets/services/pool-deck/04-cover.webp',
     coverAlt: 'Paver pool deck with a raised stone spa beside the pool',
     // Newest work first.
     gallery: [
@@ -120,7 +120,7 @@ export const services: Service[] = [
     title: 'Repair',
     description:
       'Sunken, shifted or cracked pavers lifted, re-based and re-set to match.',
-    cover: '/assets/services/root/repair.webp',
+    cover: '/assets/services/root/repair-cover.webp',
     coverAlt: 'Paver repair in progress on a driveway',
     gallery: [
       {
@@ -142,7 +142,7 @@ export const services: Service[] = [
     title: 'Coping and Tile',
     description:
       'Pool coping and tile work that finishes the edge cleanly and seals the waterline.',
-    cover: '/assets/services/root/coping-and-tile.webp',
+    cover: '/assets/services/root/coping-and-tile-cover.webp',
     coverAlt: 'Pool coping and waterline tile detail',
     gallery: [
       {
@@ -166,7 +166,7 @@ export const services: Service[] = [
       'Engineered retaining walls that hold back grade and shape usable outdoor space.',
     // Cover shares the first gallery photo. Swapping a photo means a new
     // filename, never a new file at an old path: /_next/image caches by URL.
-    cover: '/assets/services/retaining-wall/01.webp',
+    cover: '/assets/services/retaining-wall/01-cover.webp',
     coverAlt:
       'Paver retaining wall stepping down to a patio, with a gravel bed along the top',
     gallery: [
@@ -189,7 +189,7 @@ export const services: Service[] = [
     title: 'Paver Sealing',
     description:
       'Cleaning, re-sanding and sealing that locks in colour and keeps weeds and stains out.',
-    cover: '/assets/services/root/paver-sealing.webp',
+    cover: '/assets/services/root/paver-sealing-cover.webp',
     coverAlt: 'Sealed pavers with a deepened colour finish',
     gallery: [
       {
