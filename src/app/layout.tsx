@@ -43,8 +43,10 @@ export const metadata: Metadata = {
     'paver repair',
     'hardscaping',
     'landscaping design',
-    'Fort Myers',
-    'Southwest Florida',
+    'Raleigh',
+    'Raleigh NC',
+    'the Triangle',
+    'North Carolina',
   ],
   alternates: { canonical: '/' },
   robots: {

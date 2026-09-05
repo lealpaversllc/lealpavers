@@ -36,7 +36,7 @@ export const services: Service[] = [
     description:
       'Driveways and front walkways that lift a home’s curb appeal and last for decades.',
     cover: '/assets/services/root/driveway-and-walkway.webp',
-    coverAlt: 'Paver driveway leading to a Florida home',
+    coverAlt: 'Paver driveway leading up to a home',
     gallery: [
       {
         src: '/assets/services/driveway-and-walkway/01.webp',

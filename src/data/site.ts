@@ -10,9 +10,9 @@ export const site = {
   /** The three pillars carried on the vehicle wrap. */
   pillars: ['Pavers', 'Outdoor Design', 'Landscaping'],
   shortDescription:
-    'Paver installation, repair and sealing in Fort Myers, Florida.',
+    'Paver installation, repair and sealing in Raleigh, North Carolina.',
   description:
-    'Leal Pavers is a Fort Myers paving and landscaping company specializing in driveways, walkways, pool decks, retaining walls, stairs, paver repair and sealing. Over 7 years of experience and 150+ customers served across Southwest Florida. Free quotes.',
+    'Leal Pavers is a Raleigh paving and landscaping company specializing in driveways, walkways, pool decks, retaining walls, stairs, paver repair and sealing. Over 7 years of experience and 150+ customers served across the Triangle and central North Carolina. Free quotes.',
   founded: 2018,
 
   phone: {
@@ -23,11 +23,11 @@ export const site = {
   email: 'info@lealpaversllc.com',
 
   area: {
-    city: 'Fort Myers',
-    region: 'FL',
-    regionName: 'Florida',
+    city: 'Raleigh',
+    region: 'NC',
+    regionName: 'North Carolina',
     country: 'US',
-    label: 'Fort Myers, FL',
+    label: 'Raleigh, NC',
     note: 'We serve the entire region, contact us to confirm.',
   },
 

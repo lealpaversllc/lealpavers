@@ -1,7 +1,7 @@
 # Leal Pavers
 
 Marketing site for [Leal Pavers LLC](https://lealpaversllc.com) — paver
-installation, repair and sealing in Fort Myers, Florida.
+installation, repair and sealing in Raleigh, North Carolina.
 
 Built with Next.js 15 (App Router), React 19, Tailwind CSS v4 and shadcn/ui.
 
