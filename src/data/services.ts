@@ -164,12 +164,15 @@ export const services: Service[] = [
     title: 'Retaining Wall',
     description:
       'Engineered retaining walls that hold back grade and shape usable outdoor space.',
-    cover: '/assets/services/root/retaining-wall.webp',
-    coverAlt: 'Block retaining wall built along a garden bed',
+    // Cover shares the first gallery photo. Swapping a photo means a new
+    // filename, never a new file at an old path: /_next/image caches by URL.
+    cover: '/assets/services/retaining-wall/01.webp',
+    coverAlt:
+      'Paver retaining wall stepping down to a patio, with a gravel bed along the top',
     gallery: [
       {
         src: '/assets/services/retaining-wall/01.webp',
-        alt: 'Retaining wall separating two levels of a yard',
+        alt: 'Paver retaining wall stepping down to a patio, with a gravel bed along the top',
       },
       {
         src: '/assets/services/retaining-wall/02.webp',
