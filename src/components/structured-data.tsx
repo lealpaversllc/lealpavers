@@ -28,6 +28,7 @@ export function StructuredData() {
     telephone: site.phone.e164,
     email: site.email,
     foundingDate: String(site.founded),
+    founder: { '@type': 'Person', name: site.contactName },
     priceRange: '$$',
     address: {
       '@type': 'PostalAddress',

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "optimize:images": "node scripts/optimize-images.mjs && node scripts/optimize-logo.mjs && node scripts/generate-icons.mjs && node scripts/generate-og.mjs"
+    "optimize:images": "node scripts/optimize-images.mjs && node scripts/optimize-logo.mjs && node scripts/generate-logo-light.mjs && node scripts/generate-icons.mjs && node scripts/generate-og.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",

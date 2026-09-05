@@ -71,7 +71,7 @@ export function Header() {
                   ) : null}
                   <a
                     href={item.href}
-                    className="ease-soft hover:text-accent-500 rounded-sm px-1 py-1 text-white transition-colors duration-200"
+                    className="ease-soft hover:text-accent-300 rounded-sm px-1 py-1 text-white transition-colors duration-200"
                   >
                     {item.label}
                   </a>

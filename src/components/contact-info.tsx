@@ -9,7 +9,7 @@ export function ContactInfo({ className }: { className?: string }) {
       <li>
         <a
           href={`mailto:${site.email}`}
-          className="ease-soft hover:text-accent-500 inline-flex items-center gap-2 rounded-sm transition-colors duration-200"
+          className="ease-soft hover:text-accent-300 inline-flex items-center gap-2 rounded-sm transition-colors duration-200"
         >
           <Mail className="size-5 shrink-0" aria-hidden />
           {site.email}
@@ -18,7 +18,7 @@ export function ContactInfo({ className }: { className?: string }) {
       <li>
         <a
           href={site.phone.href}
-          className="ease-soft hover:text-accent-500 inline-flex items-center gap-2 rounded-sm transition-colors duration-200"
+          className="ease-soft hover:text-accent-300 inline-flex items-center gap-2 rounded-sm transition-colors duration-200"
         >
           <PhoneCall className="size-5 shrink-0" aria-hidden />
           {site.phone.display}

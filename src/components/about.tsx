@@ -50,7 +50,7 @@ export function About() {
               >
                 {site.area.city}, {site.area.region}
               </h2>
-              <p className="text-lead text-accent-500 mt-2">{site.area.note}</p>
+              <p className="text-lead text-accent-300 mt-2">{site.area.note}</p>
             </div>
           </Reveal>
 
@@ -61,7 +61,7 @@ export function About() {
       </div>
 
       <div className="container mt-14">
-        <h3 className="text-eyebrow text-accent-500 mb-4 text-center uppercase">
+        <h3 className="text-eyebrow text-accent-300 mb-4 text-center uppercase">
           Before &amp; after
         </h3>
         <ul className="grid grid-cols-1 gap-4 md:grid-cols-3">

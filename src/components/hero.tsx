@@ -20,10 +20,7 @@ export function Hero() {
     setCurrent((index) => (index + delta + count) % count)
 
   return (
-    <section
-      id="home"
-      className="bg-brand-600 relative w-full bg-[url(/assets/hero/background-red.webp)] bg-cover bg-no-repeat shadow-md"
-    >
+    <section id="home" className="bg-brand-600 relative w-full shadow-md">
       <div className="relative h-[27rem] w-full overflow-hidden sm:h-[39rem]">
         {/* Slide stage */}
         <div className="absolute top-0 left-1/2 z-10 h-full w-[800px] max-w-none -translate-x-1/2">
@@ -70,18 +67,28 @@ export function Hero() {
             <div className="absolute bottom-5 left-5 z-10 flex flex-col gap-6 sm:left-8 xl:left-10">
               <span
                 aria-hidden
-                className="hidden h-[162px] w-[236px] rounded-tl-2xl rounded-tr-2xl rounded-br-2xl bg-[url(/assets/hero/staircase-on-logo.webp)] bg-cover md:block xl:h-[260px] xl:w-[377px]"
+                className="hidden h-[162px] w-[236px] rounded-tl-2xl rounded-tr-2xl rounded-br-2xl bg-[url(/assets/hero/feature-card.webp)] bg-cover bg-center md:block xl:h-[260px] xl:w-[377px]"
               />
               <div className="space-y-3">
-                <h1 className="text-h1 font-extrabold text-white">
-                  &ldquo;Your space,
-                  <br />
-                  our art&rdquo;
+                <h1 className="text-h1 text-cream-100 font-extrabold text-balance">
+                  {site.tagline}
                 </h1>
-                <p className="text-accent-500 sr-only text-sm font-semibold md:not-sr-only">
-                  Paver installation &amp; landscaping design in{' '}
-                  {site.area.label}
-                </p>
+                <ul className="text-accent-300 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-semibold">
+                  {site.pillars.map((pillar, index) => (
+                    <li key={pillar} className="flex items-center gap-2">
+                      {index > 0 ? (
+                        <span
+                          aria-hidden
+                          className="bg-accent-500 size-1 rounded-full"
+                        />
+                      ) : null}
+                      {pillar}
+                    </li>
+                  ))}
+                  <li className="text-taupe-300 basis-full font-normal">
+                    {site.area.label}
+                  </li>
+                </ul>
               </div>
               <BrandLogo
                 tone="light"

@@ -6,8 +6,8 @@
  */
 import sharp from 'sharp'
 
-const LOGO = 'public/assets/logo.svg'
-const BRAND = '#961914'
+const LOGO = 'public/assets/logo-light.svg'
+const BRAND = '#1f394a'
 
 const SIZES = [
   { file: 'public/icon-192.png', size: 192 },

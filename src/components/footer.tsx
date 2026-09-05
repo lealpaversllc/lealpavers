@@ -9,21 +9,21 @@ export function Footer() {
       <div className="container py-12">
         <div className="grid gap-8 divide-y divide-white/20 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-y-0">
           <div className="space-y-4 pb-8 sm:pr-8 sm:pb-0">
-            <h2 className="text-eyebrow text-accent-500 uppercase">
+            <h2 className="text-eyebrow text-accent-300 uppercase">
               Follow us
             </h2>
             <SocialLinks />
           </div>
 
           <div className="space-y-4 pt-8 sm:px-8 sm:pt-0">
-            <h2 className="text-eyebrow text-accent-500 uppercase">
+            <h2 className="text-eyebrow text-accent-300 uppercase">
               Get in touch
             </h2>
             <ContactInfo />
           </div>
 
           <nav aria-label="Footer" className="space-y-4 pt-8 sm:pt-0 sm:pl-8">
-            <h2 className="text-eyebrow text-accent-500 uppercase">
+            <h2 className="text-eyebrow text-accent-300 uppercase">
               Quick links
             </h2>
             <ul className="flex flex-col gap-2">
@@ -31,7 +31,7 @@ export function Footer() {
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="ease-soft hover:text-accent-500 rounded-sm transition-colors duration-200"
+                    className="ease-soft hover:text-accent-300 rounded-sm transition-colors duration-200"
                   >
                     {item.label}
                   </a>
@@ -47,9 +47,12 @@ export function Footer() {
             width={236}
             className="w-[180px] sm:w-[236px]"
           />
-          <p className="text-sm text-white/80">
+          <p className="text-taupe-300 text-sm italic">
+            &ldquo;{site.legacyTagline}&rdquo;
+          </p>
+          <p className="text-taupe-300 text-sm">
             Copyright © {new Date().getFullYear()}{' '}
-            <span className="text-accent-500">{site.legalName}</span>. All
+            <span className="text-accent-300">{site.legalName}</span>. All
             rights reserved.
           </p>
         </div>

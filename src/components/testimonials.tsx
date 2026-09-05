@@ -14,7 +14,7 @@ function Stars({ rating }: { rating: number }) {
           key={index}
           viewBox="0 0 20 20"
           className={
-            index < rating ? 'fill-accent-600 size-4' : 'size-4 fill-stone-300'
+            index < rating ? 'fill-accent-600 size-4' : 'fill-taupe-300 size-4'
           }
           aria-hidden
         >
@@ -28,7 +28,7 @@ function Stars({ rating }: { rating: number }) {
 export function Testimonials() {
   return (
     <section
-      className="py-section w-full bg-stone-50"
+      className="py-section bg-cream-50 w-full"
       aria-labelledby="testimonials-title"
     >
       <div className="container grid gap-12 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
@@ -43,7 +43,7 @@ export function Testimonials() {
           </h2>
           <div className="mt-5 flex items-center gap-3">
             <Stars rating={5} />
-            <p className="text-sm font-medium text-stone-600">
+            <p className="text-taupe-600 text-sm font-medium">
               {testimonials.length} reviews on Google
             </p>
           </div>
@@ -53,17 +53,17 @@ export function Testimonials() {
           {testimonials.map((review) => (
             <li
               key={review.name}
-              className="rounded-card shadow-card ease-soft hover:shadow-card-hover flex flex-col gap-3 border border-stone-200 bg-white p-6 transition-shadow duration-300"
+              className="rounded-card shadow-card ease-soft hover:shadow-card-hover border-cream-300 flex flex-col gap-3 border bg-white p-6 transition-shadow duration-300"
             >
               <Quote
                 className="fill-accent-500 text-accent-500 size-5"
                 aria-hidden
               />
-              <blockquote className="text-stone-800">
+              <blockquote className="text-brand-800">
                 &ldquo;{review.quote}&rdquo;
               </blockquote>
               <footer className="mt-auto flex items-center justify-between gap-3 pt-2">
-                <cite className="text-base font-semibold text-stone-900 not-italic">
+                <cite className="text-brand-900 text-base font-semibold not-italic">
                   {review.name}
                 </cite>
                 <Stars rating={review.rating} />

@@ -8,7 +8,7 @@
 import sharp from 'sharp'
 
 const PHOTO = 'assets-source/assets/services/driveway-and-walkway/01.jpeg'
-const LOGO = 'public/assets/logo.svg'
+const LOGO = 'public/assets/logo-light.svg'
 const OUT = 'public/og.png'
 
 const W = 1200
@@ -16,18 +16,18 @@ const H = 630
 
 const PANEL = 560
 
-// The wordmark is dark navy: it needs a light panel, not a red scrim.
+// The light lockup on a navy panel, mirroring the brand deck.
 const panel = Buffer.from(
   `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
-     <rect width="${PANEL}" height="${H}" fill="#FAF9F7"/>
-     <rect x="${PANEL}" y="0" width="12" height="${H}" fill="#F5D53E"/>
+     <rect width="${PANEL}" height="${H}" fill="#1F394A"/>
+     <rect x="${PANEL}" y="0" width="12" height="${H}" fill="#B08A2A"/>
    </svg>`,
 )
 
 // Keeps the photo readable without competing with the panel.
 const warmth = Buffer.from(
   `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
-     <rect width="${W}" height="${H}" fill="#3F0C09" fill-opacity="0.18"/>
+     <rect width="${W}" height="${H}" fill="#101820" fill-opacity="0.18"/>
    </svg>`,
 )
 

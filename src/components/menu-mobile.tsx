@@ -26,7 +26,7 @@ export function MenuMobile({
                 <a
                   href={item.href}
                   onClick={onNavigate}
-                  className="ease-soft hover:text-accent-500 block rounded-md py-3 text-2xl font-semibold text-white transition-colors duration-200"
+                  className="ease-soft hover:text-accent-300 block rounded-md py-3 text-2xl font-semibold text-white transition-colors duration-200"
                 >
                   {item.label}
                 </a>
@@ -43,14 +43,14 @@ export function MenuMobile({
           </Button>
 
           <div className="space-y-3">
-            <h2 className="text-eyebrow text-accent-500 uppercase">
+            <h2 className="text-eyebrow text-accent-300 uppercase">
               Follow us
             </h2>
             <SocialLinks />
           </div>
 
           <div className="space-y-3 text-white">
-            <h2 className="text-eyebrow text-accent-500 uppercase">
+            <h2 className="text-eyebrow text-accent-300 uppercase">
               Get in touch
             </h2>
             <ContactInfo />

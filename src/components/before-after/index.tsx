@@ -60,7 +60,7 @@ export function BeforeAfter({
       <div
         aria-hidden
         style={{ left: `${position}%` }}
-        className="pointer-events-none absolute top-1/2 z-30 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white p-1 text-stone-800 shadow-lg"
+        className="text-brand-800 pointer-events-none absolute top-1/2 z-30 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white p-1 shadow-lg"
       >
         <UnfoldHorizontal size={20} />
       </div>

@@ -36,7 +36,7 @@ export function CtaContact({
         </p>
         <a
           href={site.phone.href}
-          className="ease-soft hover:text-accent-500 flex items-center gap-1.5 font-semibold text-white transition-colors duration-200"
+          className="ease-soft hover:text-accent-300 flex items-center gap-1.5 font-semibold text-white transition-colors duration-200"
         >
           <Phone className="size-4 shrink-0" strokeWidth={2.5} aria-hidden />
           {site.phone.display}

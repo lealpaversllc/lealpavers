@@ -7,26 +7,44 @@
 
 @theme {
   /* ------------------------------------------------------------------ *
-   * Brand — anchored on the existing Leal Pavers red (#961914 = 600).
+   * Brand navy. Sampled from the brand deck and the logo artwork:
+   * the wordmark and the "Propuesta 1" panel are both #1F394A, and the
+   * deck's own background is #101820.
    * ------------------------------------------------------------------ */
-  --color-brand-50: #fdf4f3;
-  --color-brand-100: #fbe6e4;
-  --color-brand-200: #f7cdc9;
-  --color-brand-300: #eda49d;
-  --color-brand-400: #df7269;
-  --color-brand-500: #c94a3f;
-  --color-brand-600: #961914;
-  --color-brand-700: #7e1712;
-  --color-brand-800: #5f110d;
-  --color-brand-900: #3f0c09;
+  --color-brand-50: #f2f5f7;
+  --color-brand-100: #e1e8ec;
+  --color-brand-200: #c3d0d8;
+  --color-brand-300: #93a9b6;
+  --color-brand-400: #5c7a8c;
+  --color-brand-500: #315468;
+  --color-brand-600: #1f394a;
+  --color-brand-700: #1a303e;
+  --color-brand-800: #142633;
+  --color-brand-900: #101820;
 
-  /* Accent gold. `ink` is the only one that passes contrast on white. */
-  --color-accent-200: #fcf1bf;
-  --color-accent-300: #f9e485;
-  --color-accent-400: #f7dc5e;
-  --color-accent-500: #f5d53e;
-  --color-accent-600: #d9b722;
-  --color-accent-ink: #6b5810;
+  /* Antique gold, from "DIEGO LEAL" and the vehicle wrap swoosh.
+   * 500 is a fill colour: it only clears contrast on navy at large sizes,
+   * so small gold text on navy uses 300, and gold text on cream uses ink. */
+  --color-accent-200: #f0e6c6;
+  --color-accent-300: #e0cb8c;
+  --color-accent-400: #cbaa4e;
+  --color-accent-500: #b08a2a;
+  --color-accent-600: #94721f;
+  --color-accent-ink: #6e5415;
+
+  /* Warm off-white: the "Propuesta 2" panel and the light logo lockup. */
+  --color-cream-50: #fefcf6;
+  --color-cream-100: #fbf5e7;
+  --color-cream-200: #f2ead7;
+  --color-cream-300: #e5dac2;
+
+  /* The "PAVERS" wordmark gradient, used for secondary text and rules. */
+  --color-taupe-200: #d0c8b8;
+  --color-taupe-300: #c9c2b4;
+  --color-taupe-400: #a39c8f;
+  --color-taupe-500: #8f897e;
+  --color-taupe-600: #6e695f;
+  --color-taupe-700: #4a463f;
 
   /* ------------------------------------------------------------------ *
    * Typography — Archivo for display, Inter for text.
@@ -67,9 +85,9 @@
   --radius-card: 0.875rem;
 
   --shadow-card:
-    0 1px 2px rgb(28 25 23 / 0.06), 0 8px 24px -8px rgb(28 25 23 / 0.14);
+    0 1px 2px rgb(16 24 32 / 0.06), 0 8px 24px -8px rgb(16 24 32 / 0.16);
   --shadow-card-hover:
-    0 2px 4px rgb(28 25 23 / 0.08), 0 18px 40px -12px rgb(28 25 23 / 0.22);
+    0 2px 4px rgb(16 24 32 / 0.08), 0 18px 40px -12px rgb(16 24 32 / 0.24);
 
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -80,24 +98,24 @@
   --header-h: 4rem;
 
   --radius: 0.625rem;
-  --background: #ffffff;
-  --foreground: #1c1917;
+  --background: #fefcf6;
+  --foreground: #101820;
   --card: #ffffff;
-  --card-foreground: #1c1917;
+  --card-foreground: #101820;
   --popover: #ffffff;
-  --popover-foreground: #1c1917;
-  --primary: #961914;
-  --primary-foreground: #ffffff;
-  --secondary: #f2f0ed;
-  --secondary-foreground: #1c1917;
-  --muted: #f2f0ed;
-  --muted-foreground: #78716c;
-  --accent: #f5d53e;
-  --accent-foreground: #3f0c09;
-  --destructive: #b3261e;
-  --border: #e7e5e4;
-  --input: #d6d3d1;
-  --ring: #961914;
+  --popover-foreground: #101820;
+  --primary: #1f394a;
+  --primary-foreground: #fbf5e7;
+  --secondary: #f2ead7;
+  --secondary-foreground: #142633;
+  --muted: #f2ead7;
+  --muted-foreground: #6e695f;
+  --accent: #b08a2a;
+  --accent-foreground: #101820;
+  --destructive: #a1332a;
+  --border: #e5dac2;
+  --input: #c9c2b4;
+  --ring: #b08a2a;
 }
 
 @media (width >= 48rem) {

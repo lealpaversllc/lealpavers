@@ -22,7 +22,7 @@ import { type ContactSchema, contactSchema } from '@/lib/schemas/contact'
 
 const labelClass = 'text-white'
 const messageClass = 'text-accent-300'
-const fieldClass = 'bg-white text-stone-900 h-11'
+const fieldClass = 'bg-white text-brand-900 h-11'
 
 export function Contact() {
   const form = useForm<ContactSchema>({
@@ -56,7 +56,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="py-section w-full bg-stone-900 bg-[url(/assets/hero/contact-bg.webp)] bg-cover bg-center bg-no-repeat"
+      className="py-section bg-brand-900 w-full bg-[url(/assets/hero/contact-bg.webp)] bg-cover bg-center bg-no-repeat"
       aria-labelledby="contact-title"
     >
       <div className="container flex justify-center gap-10">
@@ -192,7 +192,7 @@ export function Contact() {
                     <FormControl>
                       <Textarea
                         rows={4}
-                        className="min-h-28 bg-white text-stone-900"
+                        className="text-brand-900 min-h-28 bg-white"
                         {...field}
                       />
                     </FormControl>

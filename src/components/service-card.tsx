@@ -41,7 +41,7 @@ export function ServiceCard({ service }: { service: Service }) {
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="ease-soft text-accent-500 mt-1 inline-flex items-center gap-1 text-sm font-semibold transition-colors duration-200 after:absolute after:inset-0 after:content-[''] hover:text-white"
+            className="ease-soft text-accent-300 mt-1 inline-flex items-center gap-1 text-sm font-semibold transition-colors duration-200 after:absolute after:inset-0 after:content-[''] hover:text-white"
           >
             View more
             <span className="sr-only"> {service.title} photos</span>

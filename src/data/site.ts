@@ -2,7 +2,13 @@ export const site = {
   name: 'Leal Pavers',
   legalName: 'Leal Pavers LLC',
   url: 'https://lealpaversllc.com',
-  tagline: 'Your space, our art',
+  tagline: 'Transforming outdoor spaces',
+  legacyTagline: 'Your space, our art',
+  promise: 'Built on quality. Designed to last.',
+  contactName: 'Diego Leal',
+
+  /** The three pillars carried on the vehicle wrap. */
+  pillars: ['Pavers', 'Outdoor Design', 'Landscaping'],
   shortDescription:
     'Paver installation, repair and sealing in Fort Myers, Florida.',
   description:
@@ -10,9 +16,9 @@ export const site = {
   founded: 2018,
 
   phone: {
-    display: '(239) 710-9419',
-    href: 'tel:+12397109419',
-    e164: '+12397109419',
+    display: '(252) 363-3298',
+    href: 'tel:+12523633298',
+    e164: '+12523633298',
   },
   email: 'info@lealpaversllc.com',
 

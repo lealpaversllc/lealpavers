@@ -186,6 +186,16 @@ export const services: Service[] = [
   },
 ]
 
+/** Surfaces the crew installs, from the brand collateral. */
+export const materials = [
+  'Marble',
+  'Travertine',
+  'Porcelain',
+  'Natural Stone',
+  'Concrete Pavers',
+  'Tile & Coping Installation',
+]
+
 /** Everything the crew takes on, including work without a dedicated card. */
 export const allServices = [
   'Driveway',
