@@ -18,6 +18,16 @@ const PUBLIC = 'public'
 const RASTER = /\.(png|jpe?g)$/i
 
 /**
+ * Originals kept in the archive but no longer published: they belong to the
+ * previous red identity. Without this the script keeps resurrecting them.
+ */
+const RETIRED = [
+  /hero\/background-red\./,
+  /hero\/staircase-on-logo\./,
+  /hero\/rating(-mobile)?\./,
+]
+
+/**
  * Output budget per area. Both dimensions are capped (`fit: inside`) so a
  * portrait photo does not blow up to 1600x2844 when only width is limited.
  */
@@ -71,7 +81,9 @@ const kb = (bytes) => `${Math.round(bytes / 1024)}KB`
 async function main() {
   await stageOriginals()
 
-  const sources = (await walk(SOURCE)).filter((f) => RASTER.test(f))
+  const sources = (await walk(SOURCE))
+    .filter((f) => RASTER.test(f))
+    .filter((f) => !RETIRED.some((pattern) => pattern.test(f)))
   let before = 0
   let after = 0
 
