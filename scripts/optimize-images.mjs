@@ -55,6 +55,37 @@ const RULES = [
 const ruleFor = (path) =>
   RULES.find((r) => r.match.test(path)) ?? { box: [1600, 1600] }
 
+/**
+ * The desktop hero slides are parallelograms, not rectangles: the carousel
+ * stacks them with a horizontal offset and the slanted edges are what makes
+ * the diagonal cut. Measured off the original artwork (800x627, top edge
+ * inset 180..775, bottom edge 25..620) and expressed as fractions so it
+ * survives a resize. The mobile slides are full-bleed rectangles.
+ */
+const SLANTED = /hero\/(?!mobile\/)(firepit|water-feature|pool)\./
+
+const SLANT = {
+  topLeft: 0.225,
+  topRight: 0.96875,
+  bottomLeft: 0.03125,
+  bottomRight: 0.775,
+}
+
+function slantMask(width, height) {
+  const x = (fraction) => Math.round(width * fraction)
+  const points = [
+    `${x(SLANT.topLeft)},0`,
+    `${x(SLANT.topRight)},0`,
+    `${x(SLANT.bottomRight)},${height}`,
+    `${x(SLANT.bottomLeft)},${height}`,
+  ].join(' ')
+  return Buffer.from(
+    `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+       <polygon points="${points}" fill="#fff"/>
+     </svg>`,
+  )
+}
+
 async function walk(dir) {
   const entries = await readdir(dir, { withFileTypes: true })
   const out = []
@@ -111,15 +142,26 @@ async function main() {
 
     const { box, quality = 80 } = ruleFor(rel)
 
-    await sharp(source)
-      .resize({
-        width: box[0],
-        height: box[1],
-        fit: 'inside',
-        withoutEnlargement: true,
-      })
-      .webp({ quality, effort: 6 })
-      .toFile(target)
+    let pipeline = sharp(source).resize({
+      width: box[0],
+      height: box[1],
+      fit: 'inside',
+      withoutEnlargement: true,
+    })
+
+    if (SLANTED.test(rel)) {
+      const { width, height } = await pipeline
+        .clone()
+        .toBuffer({
+          resolveWithObject: true,
+        })
+        .then((r) => r.info)
+      pipeline = pipeline
+        .ensureAlpha()
+        .composite([{ input: slantMask(width, height), blend: 'dest-in' }])
+    }
+
+    await pipeline.webp({ quality, effort: 6 }).toFile(target)
 
     const sourceSize = (await stat(source)).size
     const targetSize = (await stat(target)).size
