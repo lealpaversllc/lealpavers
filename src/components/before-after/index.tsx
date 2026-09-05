@@ -1,88 +1,85 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+'use client'
+
 import './style.css'
 
 import { UnfoldHorizontal } from 'lucide-react'
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { useId, useState } from 'react'
 
 export function BeforeAfter({
   after,
   before,
+  label,
 }: {
   after: string
   before: string
+  label: string
 }) {
-  const [wrapperSize, setWrapperSize] = useState({ width: 0, height: 0 })
-  const wrapperRef = useRef<HTMLDivElement>(null)
-
-  const [beforeWidth, setBeforeWidth] = useState(50)
-
-  const setSize = () => {
-    const width = wrapperRef.current?.clientWidth || 0
-    const height = wrapperRef.current?.clientHeight || 0
-    setWrapperSize({ width, height })
-  }
-
-  useEffect(() => {
-    setSize()
-  }, [])
-
-  useEffect(() => {
-    window.addEventListener('resize', setSize)
-    return () => {
-      window.removeEventListener('resize', setSize)
-    }
-  }, [])
+  const [position, setPosition] = useState(50)
+  const id = useId()
 
   return (
-    <div
-      ref={wrapperRef}
-      className="relative h-[350px] w-full overflow-hidden rounded-2xl border-2 border-white"
-    >
-      {/* Before */}
+    <figure className="relative h-[22rem] w-full overflow-hidden rounded-2xl border-2 border-white">
+      {/* After sits underneath and is revealed as the handle moves left. */}
+      <Image
+        src={after}
+        alt={`${label} — after`}
+        fill
+        sizes="(min-width: 768px) 33vw, 92vw"
+        className="object-cover"
+      />
+
+      {/* Clipping the full-size layer (rather than shrinking it) keeps both
+          photos aligned, so no measuring of the wrapper is needed. */}
       <div
-        style={{ maxWidth: beforeWidth + '%' }}
-        className="absolute inset-0 z-10 size-full overflow-hidden"
+        className="absolute inset-0 z-10"
+        style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
       >
         <Image
-          className="max-w-none object-cover"
           src={before}
-          width={wrapperSize.width}
-          height={wrapperSize.height}
-          style={{ height: wrapperSize.height + 'px' }}
-          alt=""
-        />
-      </div>
-      {/* After */}
-      <div className="absolute inset-0 size-full">
-        <Image
-          className="max-w-none object-cover"
-          src={after}
-          width={wrapperSize.width}
-          height={wrapperSize.height}
-          style={{ height: wrapperSize.height + 'px' }}
-          alt=""
+          alt={`${label} — before`}
+          fill
+          sizes="(min-width: 768px) 33vw, 92vw"
+          className="object-cover"
         />
       </div>
 
-      {/* Slider Button */}
+      <span
+        aria-hidden
+        className="absolute top-4 left-4 z-30 rounded-full bg-black/55 px-3 py-1 text-xs font-semibold tracking-wide text-white uppercase backdrop-blur-sm"
+      >
+        Before
+      </span>
+      <span
+        aria-hidden
+        className="absolute top-4 right-4 z-30 rounded-full bg-black/55 px-3 py-1 text-xs font-semibold tracking-wide text-white uppercase backdrop-blur-sm"
+      >
+        After
+      </span>
+
       <div
-        style={{ left: beforeWidth + '%' }}
-        className="pointer-events-none absolute top-1/2 z-30 -translate-x-[14px] -translate-y-1/2 rounded-full bg-gray-50 p-1 text-gray-800 shadow-lg"
+        aria-hidden
+        style={{ left: `${position}%` }}
+        className="pointer-events-none absolute top-1/2 z-30 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white p-1 text-stone-800 shadow-lg"
       >
         <UnfoldHorizontal size={20} />
       </div>
 
-      {/* Slider */}
+      <label htmlFor={id} className="sr-only">
+        {label} — drag to compare before and after
+      </label>
       <input
+        id={id}
         type="range"
         min={0}
         max={100}
-        value={beforeWidth}
-        onChange={(e) => setBeforeWidth(+e.currentTarget.value)}
-        className="absolute inset-0 z-20 appearance-none bg-transparent"
-        style={{ ['--wrapper-height' as any]: wrapperSize.height + 'px' }}
+        step={1}
+        value={position}
+        onChange={(event) => setPosition(Number(event.currentTarget.value))}
+        aria-valuetext={`${position}% before, ${100 - position}% after`}
+        className="ba-range absolute inset-0 z-20 h-full w-full appearance-none bg-transparent"
       />
-    </div>
+      <figcaption className="sr-only">{label}</figcaption>
+    </figure>
   )
 }

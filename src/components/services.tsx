@@ -1,119 +1,37 @@
-'use client'
-import useMediaQuery from '@/hooks/use-media-query'
-
-import { Card } from './ui/card'
-import { Skeleton } from './ui/skeleton'
+import { ServiceCard } from '@/components/service-card'
+import { SectionHeading } from '@/components/ui/section-heading'
+import { allServices, services } from '@/data/services'
 
 export function Service() {
-  const windowSize = useMediaQuery()
-  const windowWidth = windowSize?.[0]
-
-  if (!windowWidth) {
-    return <Skeleton className="h-[600px] w-full" />
-  }
-
-  const services = [
-    {
-      title: 'Parking Lot',
-      src: '/assets/services/root/parking-loot.jpeg',
-      gallery: [
-        { src: '/assets/services/parking-loot/01.jpeg' },
-        { src: '/assets/services/parking-loot/02.jpeg' },
-        { src: '/assets/services/parking-loot/03.jpeg' },
-      ],
-    },
-    {
-      title: 'Driveway and Walkway',
-      src: '/assets/services/root/driveway-and-walkway.jpeg',
-      gallery: [
-        { src: '/assets/services/driveway-and-walkway/01.jpeg' },
-        { src: '/assets/services/driveway-and-walkway/02.jpeg' },
-        { src: '/assets/services/driveway-and-walkway/03.jpeg' },
-      ],
-    },
-    {
-      title: 'Stairs',
-      src: '/assets/services/root/stairs.jpeg',
-      gallery: [
-        { src: '/assets/services/stairs/01.jpeg' },
-        { src: '/assets/services/stairs/03.jpeg' },
-        { src: '/assets/services/stairs/02.jpeg' },
-      ],
-    },
-    {
-      title: 'Pool Deck',
-      src: '/assets/services/root/pool-deck.jpeg',
-      gallery: [
-        { src: '/assets/services/pool-deck/01.jpeg' },
-        { src: '/assets/services/pool-deck/02.jpeg' },
-        { src: '/assets/services/pool-deck/03.jpeg' },
-      ],
-    },
-    {
-      title: 'Repair',
-      src: '/assets/services/root/repair.jpeg',
-      gallery: [
-        { src: '/assets/services/repair/01.jpeg' },
-        { src: '/assets/services/repair/02.jpeg' },
-        { src: '/assets/services/repair/03.jpeg' },
-      ],
-    },
-    {
-      title: 'Coping and Tile',
-      src: '/assets/services/root/coping-and-tile.jpeg',
-      gallery: [
-        { src: '/assets/services/coping-and-tile/01.jpeg' },
-        { src: '/assets/services/coping-and-tile/02.jpeg' },
-        { src: '/assets/services/coping-and-tile/03.jpeg' },
-      ],
-    },
-    {
-      title: 'Retaining Wall',
-      src: '/assets/services/root/retaining-wall.jpeg',
-      gallery: [
-        { src: '/assets/services/retaining-wall/01.jpeg' },
-        { src: '/assets/services/retaining-wall/02.jpeg' },
-        { src: '/assets/services/retaining-wall/03.jpeg' },
-      ],
-    },
-    {
-      title: 'Paver Sealing',
-      src: '/assets/services/root/paver-sealing.jpeg',
-      gallery: [
-        { src: '/assets/services/paver-sealing/01.jpeg' },
-        { src: '/assets/services/paver-sealing/02.jpeg' },
-        { src: '/assets/services/paver-sealing/03.jpeg' },
-      ],
-    },
-  ]
-
   return (
-    <section
-      id="services"
-      className="flex w-full flex-col items-center bg-[#D7D7D6] pb-10"
-    >
-      <div className="container py-10 max-md:px-4">
-        <h2 className="text-red-leal text-3xl font-bold">Our Services</h2>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {services.map((item) => (
-            <Card
-              key={item.src}
-              src={item.src}
-              title={item.title}
-              gallery={item.gallery}
-            />
+    <section id="services" className="py-section w-full bg-stone-200">
+      <div className="container space-y-10">
+        <SectionHeading
+          eyebrow="What we do"
+          title="Our Services"
+          lead="From a single repair to a full driveway rebuild — installed by a crew that has been doing this in Southwest Florida for over seven years."
+        />
+
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          {services.map((service) => (
+            <ServiceCard key={service.slug} service={service} />
           ))}
         </div>
-      </div>
-      <div className="container max-md:px-4">
-        <div className="bg-red-leal flex flex-col items-center p-10">
-          <h3 className="text-yellow-leal text-2xl font-semibold">
-            All our services:
+
+        <div className="bg-brand-600 rounded-card px-6 py-10 sm:px-10">
+          <h3 className="text-accent-500 text-eyebrow text-center uppercase">
+            All our services
           </h3>
-          <p className="text-center text-white">
-            Driveway - Pool Deck - Sidewalk - Retaining Wall - Patio - Repair -
-            Stairs - Paver Sealing - Coping and Tile - Paver Cleaning
-          </p>
+          <ul className="mt-5 flex flex-wrap justify-center gap-2">
+            {allServices.map((service) => (
+              <li
+                key={service}
+                className="rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-sm font-medium text-white"
+              >
+                {service}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

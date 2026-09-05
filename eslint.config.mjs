@@ -12,6 +12,15 @@ const compat = new FlatCompat({
 })
 
 const eslintConfig = [
+  {
+    ignores: [
+      '.next/**',
+      'out/**',
+      'build/**',
+      'next-env.d.ts',
+      'assets-source/**',
+    ],
+  },
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
   {
     plugins: {
@@ -33,7 +42,7 @@ const eslintConfig = [
           endOfLine: 'auto',
         },
       ],
-      'no-empty-object-type': 'off',
+      '@typescript-eslint/no-empty-object-type': 'off',
     },
   },
 ]

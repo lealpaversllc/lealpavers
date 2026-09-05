@@ -1,11 +1,20 @@
-@import "tailwindcss";
-
-input::-webkit-slider-thumb {
-  @apply appearance-none w-1 cursor-pointer bg-white/80;
-  height: var(--wrapper-height);
+/* Scoped to the comparison slider: these pseudo-elements are global selectors
+   and used to restyle every range input on the site. */
+.ba-range::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 0.25rem;
+  height: 100%;
+  cursor: ew-resize;
+  background-color: rgb(255 255 255 / 0.85);
 }
 
-input::-moz-range-thumb {
-  @apply appearance-none w-1 cursor-pointer bg-white/80 border-none rounded-none;
-  height: var(--wrapper-height);
+.ba-range::-moz-range-thumb {
+  appearance: none;
+  width: 0.25rem;
+  height: 100%;
+  cursor: ew-resize;
+  border: none;
+  border-radius: 0;
+  background-color: rgb(255 255 255 / 0.85);
 }

@@ -1,105 +1,58 @@
-'use client'
-
-import { Mail, PhoneCall } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
-
-import useMediaQuery from '@/hooks/use-media-query'
-import { cn } from '@/lib/utils'
-
-import { Separator } from './ui/separator'
-import { Skeleton } from './ui/skeleton'
+import { BrandLogo } from '@/components/brand-logo'
+import { ContactInfo } from '@/components/contact-info'
+import { SocialLinks } from '@/components/social-links'
+import { site } from '@/data/site'
 
 export function Footer() {
-  const windowSize = useMediaQuery()
-  const windowWidth = windowSize?.[0]
-
-  if (!windowWidth) {
-    return <Skeleton className="h-[600px] w-full" />
-  }
-
   return (
-    <footer className="bg-red-leal flex w-full flex-col items-center">
-      <div
-        className={cn(
-          'container flex justify-center gap-2 p-5 font-normal text-white [&_h4]:text-2xl',
-          windowWidth < 640 && 'flex-col',
-          windowWidth >= 640 && 'h-[230px]',
-        )}
-      >
-        <div className="space-y-2 px-3 py-4">
-          <h4>Follow us</h4>
-          <div className="inline-flex space-x-5">
-            <Link
-              href="https://www.facebook.com/share/1URRk2ER1E/?mibextid=wwXIfr"
-              target="_blank"
-            >
-              <Image
-                src="/assets/icons/facebook.svg"
-                alt=""
-                width={25}
-                height={25}
-                className="size-[25px]"
-              />
-            </Link>
-            <Link
-              href="https://www.instagram.com/lealpaversllc?igsh=dGMzdnRtdzQweGQw"
-              target="_blank"
-            >
-              <Image
-                src="/assets/icons/instagram.png"
-                alt=""
-                width={25}
-                height={25}
-                className="size-[25px]"
-              />
-            </Link>
+    <footer className="bg-brand-600 w-full text-white">
+      <div className="container py-12">
+        <div className="grid gap-8 divide-y divide-white/20 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-y-0">
+          <div className="space-y-4 pb-8 sm:pr-8 sm:pb-0">
+            <h2 className="text-eyebrow text-accent-500 uppercase">
+              Follow us
+            </h2>
+            <SocialLinks />
           </div>
-        </div>
-        <Separator
-          orientation={windowWidth < 640 ? 'horizontal' : 'vertical'}
-        />
-        <div className="space-y-2 px-3 py-4">
-          <h4>Get in Touch</h4>
-          <div className="space-y-3">
-            <div className="flex items-center gap-1.5">
-              <Mail size={20} />
-              <Link href="mailto:info@lealpaversllc.com">
-                info@lealpaversllc.com
-              </Link>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <PhoneCall size={20} />
-              <Link href="tel:+12397109419">(239) 710-9419</Link>
-            </div>
+
+          <div className="space-y-4 pt-8 sm:px-8 sm:pt-0">
+            <h2 className="text-eyebrow text-accent-500 uppercase">
+              Get in touch
+            </h2>
+            <ContactInfo />
           </div>
+
+          <nav aria-label="Footer" className="space-y-4 pt-8 sm:pt-0 sm:pl-8">
+            <h2 className="text-eyebrow text-accent-500 uppercase">
+              Quick links
+            </h2>
+            <ul className="flex flex-col gap-2">
+              {site.nav.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className="ease-soft hover:text-accent-500 rounded-sm transition-colors duration-200"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
-        <Separator
-          orientation={windowWidth < 640 ? 'horizontal' : 'vertical'}
-        />
-        <div className="space-y-2 px-3 py-4">
-          <h4>Quick Links</h4>
-          <div className="flex flex-col gap-2">
-            <Link href="#home">Home</Link>
-            <Link href="#services">Services</Link>
-            <Link href="#about">About</Link>
-            <Link href="#contact">Contact</Link>
-          </div>
+
+        <div className="mt-12 flex flex-col items-center gap-2">
+          <BrandLogo
+            tone="light"
+            width={236}
+            className="w-[180px] sm:w-[236px]"
+          />
+          <p className="text-sm text-white/80">
+            Copyright © {new Date().getFullYear()}{' '}
+            <span className="text-accent-500">{site.legalName}</span>. All
+            rights reserved.
+          </p>
         </div>
-      </div>
-      <div className="container flex flex-col items-center">
-        <p className="text-sm text-white">
-          Copyright © {new Date().getFullYear()}{' '}
-          <strong className="text-yellow-leal font-normal">Leal Pavers</strong>.
-          All rights reserved.
-        </p>
-        <Image
-          src="/assets/logo.svg"
-          className="w-[236px] -translate-x-[13px]"
-          width={300}
-          height={200}
-          alt=""
-        />
       </div>
     </footer>
   )
