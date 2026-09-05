@@ -79,9 +79,24 @@ export const services: Service[] = [
     title: 'Pool Deck',
     description:
       'Slip-resistant pool decks that stay cool underfoot and drain properly.',
-    cover: '/assets/services/root/pool-deck.webp',
-    coverAlt: 'Paver pool deck surrounding a swimming pool',
+    // Cover shares the newest gallery photo. Swapping a photo means a new
+    // filename, never a new file at an old path: /_next/image caches by URL.
+    cover: '/assets/services/pool-deck/04.webp',
+    coverAlt: 'Paver pool deck with a raised stone spa beside the pool',
+    // Newest work first.
     gallery: [
+      {
+        src: '/assets/services/pool-deck/04.webp',
+        alt: 'Raised stone spa spilling into a pool, set in a large-format paver deck',
+      },
+      {
+        src: '/assets/services/pool-deck/05.webp',
+        alt: 'Pool deck in light porcelain pavers with geometric turf inlays',
+      },
+      {
+        src: '/assets/services/pool-deck/06.webp',
+        alt: 'Pool deck with a timber pergola, lounge seating and turf inlays',
+      },
       {
         src: '/assets/services/pool-deck/01.webp',
         alt: 'Pool deck paved in large-format stone',
@@ -93,6 +108,10 @@ export const services: Service[] = [
       {
         src: '/assets/services/pool-deck/03.webp',
         alt: 'Finished pool deck seen from the water',
+      },
+      {
+        src: '/assets/services/pool-deck/07.webp',
+        alt: 'Screened pool enclosure over a paver deck',
       },
     ],
   },

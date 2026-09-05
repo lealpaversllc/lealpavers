@@ -14,7 +14,9 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 60 * 60 * 24 * 365,
+    // Long enough to matter, short enough that an in-place photo
+    // swap recovers on its own.
+    minimumCacheTTL: 60 * 60 * 24 * 30,
   },
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }]
