@@ -1,19 +1,19 @@
 import { About } from '@/components/about'
 import { Contact } from '@/components/contact'
-import { Footer } from '@/components/footer'
 import { Hero } from '@/components/hero'
-import { Rating } from '@/components/rating'
+import { PromiseBand } from '@/components/promise-band'
 import { Service } from '@/components/services'
+import { Testimonials } from '@/components/testimonials'
 
 export default function Home() {
   return (
-    <div className="flex w-full flex-col items-center">
+    <>
       <Hero />
       <Service />
       <About />
-      <Rating />
+      <PromiseBand />
+      <Testimonials />
       <Contact />
-      <Footer />
-    </div>
+    </>
   )
 }

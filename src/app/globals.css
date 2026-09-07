@@ -1,178 +1,210 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
+/* The site is light-only. Binding `dark:` to a class that is never applied
+   stops leftover shadcn dark styles from firing on prefers-color-scheme. */
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  /* ------------------------------------------------------------------ *
+   * Brand navy. Sampled from the brand deck and the logo artwork:
+   * the wordmark and the "Propuesta 1" panel are both #1F394A, and the
+   * deck's own background is #101820.
+   * ------------------------------------------------------------------ */
+  --color-brand-50: #f2f5f7;
+  --color-brand-100: #e1e8ec;
+  --color-brand-200: #c3d0d8;
+  --color-brand-300: #93a9b6;
+  --color-brand-400: #5c7a8c;
+  --color-brand-500: #315468;
+  --color-brand-600: #1f394a;
+  --color-brand-700: #1a303e;
+  --color-brand-800: #142633;
+  --color-brand-900: #101820;
+
+  /* Antique gold, from "DIEGO LEAL" and the vehicle wrap swoosh.
+   * 500 is a fill colour: it only clears contrast on navy at large sizes,
+   * so small gold text on navy uses 300, and gold text on cream uses ink. */
+  --color-accent-200: #f0e6c6;
+  --color-accent-300: #e0cb8c;
+  --color-accent-400: #cbaa4e;
+  --color-accent-500: #b08a2a;
+  --color-accent-600: #94721f;
+  --color-accent-ink: #6e5415;
+
+  /* Warm off-white: the "Propuesta 2" panel and the light logo lockup. */
+  --color-cream-50: #fefcf6;
+  --color-cream-100: #fbf5e7;
+  --color-cream-200: #f2ead7;
+  --color-cream-300: #e5dac2;
+
+  /* The "PAVERS" wordmark gradient, used for secondary text and rules. */
+  --color-taupe-200: #d0c8b8;
+  --color-taupe-300: #c9c2b4;
+  --color-taupe-400: #a39c8f;
+  --color-taupe-500: #8f897e;
+  --color-taupe-600: #6e695f;
+  --color-taupe-700: #4a463f;
+
+  /* ------------------------------------------------------------------ *
+   * Typography — Archivo for display, Inter for text.
+   * ------------------------------------------------------------------ */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--font-archivo), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --text-eyebrow: 0.8125rem;
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.14em;
+  --text-eyebrow--font-weight: 700;
+
+  --text-h3: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.01em;
+
+  --text-h2: clamp(1.75rem, 1.2rem + 2.4vw, 2.75rem);
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.02em;
+
+  --text-h1: clamp(2rem, 1.2rem + 3.6vw, 3.5rem);
+  --text-h1--line-height: 1.05;
+  --text-h1--letter-spacing: -0.02em;
+
+  --text-display: clamp(2.25rem, 1.1rem + 5vw, 4.25rem);
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.03em;
+
+  --text-lead: clamp(1.0625rem, 1rem + 0.5vw, 1.375rem);
+  --text-lead--line-height: 1.55;
+
+  /* ------------------------------------------------------------------ *
+   * Rhythm & surfaces
+   * ------------------------------------------------------------------ */
+  --spacing-section: clamp(3.5rem, 7vw, 6.5rem);
+
+  --radius-card: 0.875rem;
+
+  --shadow-card:
+    0 1px 2px rgb(16 24 32 / 0.06), 0 8px 24px -8px rgb(16 24 32 / 0.16);
+  --shadow-card-hover:
+    0 2px 4px rgb(16 24 32 / 0.08), 0 18px 40px -12px rgb(16 24 32 / 0.24);
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 :root {
-  --red-leal: #961914;
-  --yellow-leal: #F5D53E;
+  /* Height of the fixed header. Drives the page spacer AND the anchor
+     scroll offset, so in-page links no longer land underneath the nav. */
+  --header-h: 4rem;
+
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.141 0.005 285.823);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.21 0.006 285.885);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.21 0.006 285.885);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.705 0.015 286.067);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-primary: oklch(0.21 0.006 285.885);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.705 0.015 286.067);
+  --background: #fefcf6;
+  --foreground: #101820;
+  --card: #ffffff;
+  --card-foreground: #101820;
+  --popover: #ffffff;
+  --popover-foreground: #101820;
+  --primary: #1f394a;
+  --primary-foreground: #fbf5e7;
+  --secondary: #f2ead7;
+  --secondary-foreground: #142633;
+  --muted: #f2ead7;
+  --muted-foreground: #6e695f;
+  --accent: #b08a2a;
+  --accent-foreground: #101820;
+  --destructive: #a1332a;
+  --border: #e5dac2;
+  --input: #c9c2b4;
+  --ring: #b08a2a;
+}
+
+@media (width >= 48rem) {
+  :root {
+    --header-h: 4.5rem;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-red-leal: var(--red-leal);
-  --color-yellow-leal: var(--yellow-leal);
-  --font-sans: var(--font-poppins-sans);
-
-  --animate-infinite-scroll: infinite-scroll 25s linear infinite;
-
-  --color-sidebar-ring: var(--sidebar-ring);
-
-  --color-sidebar-border: var(--sidebar-border);
-
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-
-  --color-sidebar-accent: var(--sidebar-accent);
-
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-
-  --color-sidebar-primary: var(--sidebar-primary);
-
-  --color-sidebar-foreground: var(--sidebar-foreground);
-
-  --color-sidebar: var(--sidebar);
-
-  --color-chart-5: var(--chart-5);
-
-  --color-chart-4: var(--chart-4);
-
-  --color-chart-3: var(--chart-3);
-
-  --color-chart-2: var(--chart-2);
-
-  --color-chart-1: var(--chart-1);
-
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-input: var(--input);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
 
-  --color-border: var(--border);
+/* Centered and padded by default. Every `container` in the app used to rely
+   on a `flex items-center` parent to be centred, and patched its own padding. */
+@utility container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
 
-  --color-destructive: var(--destructive);
-
-  --color-accent-foreground: var(--accent-foreground);
-
-  --color-accent: var(--accent);
-
-  --color-muted-foreground: var(--muted-foreground);
-
-  --color-muted: var(--muted);
-
-  --color-secondary-foreground: var(--secondary-foreground);
-
-  --color-secondary: var(--secondary);
-
-  --color-primary-foreground: var(--primary-foreground);
-
-  --color-primary: var(--primary);
-
-  --color-popover-foreground: var(--popover-foreground);
-
-  --color-popover: var(--popover);
-
-  --color-card-foreground: var(--card-foreground);
-
-  --color-card: var(--card);
-
-  @keyframes infinite-scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
   }
 
-  --radius-sm: calc(var(--radius) - 4px);
-
-  --radius-md: calc(var(--radius) - 2px);
-
-  --radius-lg: var(--radius);
-
-  --radius-xl: calc(var(--radius) + 4px)
-}
-
-body {
-  font-family: sans-serif;
-}
-
-.dark {
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.92 0.004 286.32);
-  --primary-foreground: oklch(0.21 0.006 285.885);
-  --secondary: oklch(0.274 0.006 286.033);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.552 0.016 285.938);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.552 0.016 285.938);
+  @media (width >= 80rem) {
+    padding-inline: 2.5rem;
+  }
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  /* In-page anchors clear the fixed header. */
+  :target,
+  section[id] {
+    scroll-margin-top: var(--header-h);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent-500);
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 }
 
-#nav-bar {
-  position: fixed;
-  z-index: 50;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

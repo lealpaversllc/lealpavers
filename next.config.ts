@@ -1,7 +1,26 @@
 import type { NextConfig } from 'next'
 
+const securityHeaders = [
+  { key: 'X-Content-Type-Options', value: 'nosniff' },
+  { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+  { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+  {
+    key: 'Permissions-Policy',
+    value: 'camera=(), microphone=(), geolocation=()',
+  },
+]
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  poweredByHeader: false,
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    // Long enough to matter, short enough that an in-place photo
+    // swap recovers on its own.
+    minimumCacheTTL: 60 * 60 * 24 * 30,
+  },
+  async headers() {
+    return [{ source: '/:path*', headers: securityHeaders }]
+  },
 }
 
 export default nextConfig

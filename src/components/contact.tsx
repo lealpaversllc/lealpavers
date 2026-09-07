@@ -1,158 +1,225 @@
 'use client'
+
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Loader2 } from 'lucide-react'
 import Image from 'next/image'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-import { z } from 'zod'
 
 import { SendEmail } from '@/actions/send-email'
-import useMediaQuery from '@/hooks/use-media-query'
-import { cn } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { type ContactSchema, contactSchema } from '@/lib/schemas/contact'
 
-import { Button } from './ui/button'
-import { Input } from './ui/input'
-import { ScrollArea } from './ui/scroll-area'
-import { Skeleton } from './ui/skeleton'
-import { Textarea } from './ui/textarea'
-
-const formSchema = z.object({
-  name: z.string().min(1, { message: 'Fill in the field' }),
-  email: z.string().email({ message: 'Email invalid.' }),
-  address: z.string().optional(),
-  phone: z.string().min(1, { message: 'Fill in the field' }),
-  description: z.string().optional(),
-})
-
-export type FormSchema = z.infer<typeof formSchema>
+const labelClass = 'text-white'
+const messageClass = 'text-accent-300'
+const fieldClass = 'bg-white text-brand-900 h-11'
 
 export function Contact() {
-  const windowSize = useMediaQuery()
-  const windowWidth = windowSize?.[0]
-
-  const form = useForm<FormSchema>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<ContactSchema>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      address: '',
+      description: '',
+      company: '',
+    },
   })
 
-  if (!windowWidth) return <Skeleton className="h-[600px] w-full" />
+  const { isSubmitting } = form.formState
 
-  async function handleSubmitForm(data: FormSchema) {
+  async function handleSubmitForm(data: ContactSchema) {
     const result = await SendEmail(data)
 
-    if (result.error) {
-      toast('Try again later.', { duration: 2000 })
+    if (!result.ok) {
+      toast.error(result.error, { duration: 4000 })
+      return
     }
 
-    if (result.data) {
-      form.reset()
-      toast('Message sent successfully.', { duration: 2000 })
-    }
+    form.reset()
+    toast.success('Message sent. We will get back to you shortly.', {
+      duration: 4000,
+    })
   }
 
   return (
     <section
       id="contact"
-      className="flex h-fit w-full flex-col items-center bg-black bg-[url(/assets/hero/contact-bg.png)] bg-cover bg-no-repeat pb-10"
+      className="py-section bg-brand-900 w-full bg-[url(/assets/hero/contact-bg.webp)] bg-cover bg-center bg-no-repeat"
+      aria-labelledby="contact-title"
     >
-      <div className="container flex h-full justify-center gap-10 sm:py-24">
+      <div className="container flex justify-center gap-10">
         <Image
-          src="/assets/hero/contact.png"
-          alt=""
-          className="hidden w-1/2 rounded-xl lg:flex lg:max-w-fit"
+          src="/assets/hero/contact.webp"
+          alt="Paver driveway completed by the Leal Pavers crew"
           width={598}
           height={811}
+          sizes="37.375rem"
+          className="hidden w-[37.375rem] shrink-0 self-stretch rounded-xl object-cover lg:block"
         />
-        <ScrollArea
-          className={cn(
-            'bg-red-leal flex w-full flex-col gap-3 p-14 sm:w-[598px] sm:rounded-xl',
-            windowWidth > 1024 && 'max-h-[811px]',
-          )}
-        >
-          <h3 className="bg-yellow-leal mb-4 w-fit rounded-xl p-7 py-2 text-3xl font-bold">
+
+        <div className="bg-brand-600 w-full max-w-[37.375rem] rounded-xl p-6 sm:p-10">
+          <p className="bg-accent-500 text-brand-900 text-eyebrow w-fit rounded-full px-4 py-1.5 uppercase">
             Contact
-          </h3>
-          <p className="text-4xl font-semibold text-white">
-            What should I do to get a free quote?
           </p>
-          <p className="text-base font-normal text-white">
+          <h2
+            id="contact-title"
+            className="text-h2 mt-4 font-bold text-balance text-white"
+          >
+            What should I do to get a free quote?
+          </h2>
+          <p className="mt-2 text-base text-white/85">
             It&apos;s very simple! Fill out the form below and one of our
-            experts will contact you!
+            experts will contact you.
           </p>
 
-          <form
-            onSubmit={form.handleSubmit(handleSubmitForm)}
-            className="mt-2 flex h-full flex-col justify-between gap-3"
-          >
-            <div className="space-y-2">
-              <div className="flex flex-col gap-2">
-                <Input
-                  placeholder="Name*"
-                  {...form.register('name')}
-                  className="bg-white"
-                />
-                {form.formState.errors.name && (
-                  <span className="text-yellow-leal text-sm">
-                    {form.formState.errors.name.message}
-                  </span>
-                )}
-              </div>
-              <div className="flex flex-col gap-2">
-                <Input
-                  type="email"
-                  {...form.register('email')}
-                  placeholder="Email*"
-                  className="bg-white"
-                />
-                {form.formState.errors.email && (
-                  <span className="text-yellow-leal text-sm">
-                    {form.formState.errors.email.message}
-                  </span>
-                )}
-              </div>
-              <div className="flex flex-col gap-2">
-                <Input
-                  placeholder="Phone number"
-                  className="bg-white"
-                  {...form.register('phone')}
-                />
-                {form.formState.errors.phone && (
-                  <span className="text-yellow-leal text-sm">
-                    {form.formState.errors.phone.message}
-                  </span>
-                )}
-              </div>
-              <div className="flex flex-col gap-2">
-                <Input
-                  {...form.register('address')}
-                  placeholder="Address"
-                  className="bg-white"
-                />
-                {form.formState.errors.address && (
-                  <span className="text-yellow-leal text-sm">
-                    {form.formState.errors.address.message}
-                  </span>
-                )}
-              </div>
-              <div className="flex flex-col gap-2">
-                <Textarea
-                  {...form.register('description')}
-                  placeholder="Tell us about your project"
-                  className="bg-white"
-                />
-                {form.formState.errors.description && (
-                  <span className="text-yellow-leal text-sm">
-                    {form.formState.errors.description.message}
-                  </span>
-                )}
-              </div>
-            </div>
-            <Button
-              type="submit"
-              className="bg-yellow-leal hover:bg-yellow-leal/60 mt-4 w-full py-5 text-3xl font-extrabold text-black"
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(handleSubmitForm)}
+              noValidate
+              className="mt-8 space-y-4"
             >
-              Send
-            </Button>
-          </form>
-        </ScrollArea>
+              {/* Honeypot: off-screen rather than hidden so bots still fill it. */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden"
+              >
+                <label htmlFor="company">Company</label>
+                <input
+                  id="company"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  {...form.register('company')}
+                />
+              </div>
+
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className={labelClass}>Name *</FormLabel>
+                    <FormControl>
+                      <Input
+                        autoComplete="name"
+                        className={fieldClass}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className={messageClass} />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className={labelClass}>Email *</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="email"
+                        inputMode="email"
+                        autoComplete="email"
+                        className={fieldClass}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className={messageClass} />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className={labelClass}>Phone number *</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="tel"
+                        inputMode="tel"
+                        autoComplete="tel"
+                        className={fieldClass}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className={messageClass} />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="address"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className={labelClass}>Address</FormLabel>
+                    <FormControl>
+                      <Input
+                        autoComplete="street-address"
+                        className={fieldClass}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className={messageClass} />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="description"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className={labelClass}>
+                      Tell us about your project
+                    </FormLabel>
+                    <FormControl>
+                      <Textarea
+                        rows={4}
+                        className="text-brand-900 min-h-28 bg-white"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className={messageClass} />
+                  </FormItem>
+                )}
+              />
+
+              <Button
+                type="submit"
+                variant="accent"
+                size="xl"
+                disabled={isSubmitting}
+                className="mt-2 w-full"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="animate-spin" aria-hidden />
+                    Sending…
+                  </>
+                ) : (
+                  'Send'
+                )}
+              </Button>
+            </form>
+          </Form>
+        </div>
       </div>
     </section>
   )
