@@ -20,7 +20,7 @@ export const site = {
     href: 'tel:+12523633298',
     e164: '+12523633298',
   },
-  email: 'info@lealpaversllc.com',
+  email: 'info@lealpaversdesign.com',
 
   area: {
     city: 'Raleigh',

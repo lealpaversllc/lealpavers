@@ -7,9 +7,9 @@ import { type ContactSchema, contactSchema } from '@/lib/schemas/contact'
 
 export type SendEmailResult = { ok: true } | { ok: false; error: string }
 
-const TO = process.env.CONTACT_TO_EMAIL ?? 'info@lealpaversllc.com'
+const TO = process.env.CONTACT_TO_EMAIL ?? 'info@lealpaversdesign.com'
 const FROM =
-  process.env.CONTACT_FROM_EMAIL ?? 'Leal Pavers <info@lealpaversllc.com>'
+  process.env.CONTACT_FROM_EMAIL ?? 'Leal Pavers <info@lealpaversdesign.com>'
 
 export async function SendEmail(data: ContactSchema): Promise<SendEmailResult> {
   const apiKey = process.env.RESEND_API_KEY
