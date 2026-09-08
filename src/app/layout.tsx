@@ -72,10 +72,10 @@ export const metadata: Metadata = {
     description: site.description,
     images: [
       {
-        url: '/og.png',
+        url: site.ogImage,
         width: 1200,
         height: 630,
-        alt: `${site.name} — paver driveway and landscaping design`,
+        alt: `${site.name} & Landscaping Design`,
       },
     ],
   },
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${site.name} — Paver Installation in ${site.area.label}`,
     description: site.shortDescription,
-    images: ['/og.png'],
+    images: [site.ogImage],
   },
 }
 

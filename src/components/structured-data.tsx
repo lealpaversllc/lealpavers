@@ -23,7 +23,7 @@ export function StructuredData() {
     url: site.url,
     description: site.description,
     slogan: site.tagline,
-    image: `${site.url}/og.png`,
+    image: `${site.url}${site.ogImage}`,
     logo: `${site.url}/icon-512.png`,
     telephone: site.phone.e164,
     email: site.email,
