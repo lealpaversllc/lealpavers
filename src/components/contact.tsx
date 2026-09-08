@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import { SendEmail } from '@/actions/send-email'
+import { SendEmail, type SendEmailResult } from '@/actions/send-email'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -20,7 +20,9 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { type ContactSchema, contactSchema } from '@/lib/schemas/contact'
 
-const labelClass = 'text-white'
+// shadcn's FormLabel turns red on error; on this red card that kills the
+// contrast, so keep the label white and let the message carry the error.
+const labelClass = 'text-white data-[error=true]:text-white'
 const messageClass = 'text-accent-300'
 const fieldClass = 'bg-white text-brand-900 h-11'
 
@@ -40,7 +42,19 @@ export function Contact() {
   const { isSubmitting } = form.formState
 
   async function handleSubmitForm(data: ContactSchema) {
-    const result = await SendEmail(data)
+    let result: SendEmailResult
+    try {
+      result = await SendEmail(data)
+    } catch (error) {
+      // The action itself never throws; this is the transport failing
+      // (offline, deploy swapped mid-request). Without it the promise
+      // rejects silently and the visitor never learns the send failed.
+      console.error('SendEmail failed', error)
+      toast.error('We could not send your message right now.', {
+        duration: 4000,
+      })
+      return
+    }
 
     if (!result.ok) {
       toast.error(result.error, { duration: 4000 })
