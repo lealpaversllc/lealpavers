@@ -1,49 +1,45 @@
 /**
- * Builds the 1200x630 Open Graph image: a project photo under a brand scrim
- * with the wordmark. Text is drawn from the logo asset rather than a system
- * font so the output is identical on any machine.
+ * Builds the 1200x630 Open Graph image: the brand lockup (mark, wordmark and
+ * tagline) centred on the cream from the brand deck. The source is a square
+ * export with generous margins, so it is trimmed to its content first and
+ * then fitted with an even margin on every side.
  *
  *   node scripts/generate-og.mjs
  */
 import sharp from 'sharp'
 
-const PHOTO = 'assets-source/assets/services/driveway-and-walkway/01.jpeg'
-const LOGO = 'public/assets/logo-light.svg'
+const LOCKUP = 'assets-source/og.png'
 const OUT = 'public/og.png'
 
 const W = 1200
 const H = 630
 
-const PANEL = 560
+// Sampled from the lockup export so the canvas and the artwork match.
+const CREAM = { r: 250, g: 243, b: 233 }
 
-// The light lockup on a navy panel, mirroring the brand deck.
-const panel = Buffer.from(
-  `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
-     <rect width="${PANEL}" height="${H}" fill="#1F394A"/>
-     <rect x="${PANEL}" y="0" width="12" height="${H}" fill="#B08A2A"/>
-   </svg>`,
-)
+const MARGIN = 56
 
-// Keeps the photo readable without competing with the panel.
-const warmth = Buffer.from(
-  `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
-     <rect width="${W}" height="${H}" fill="#101820" fill-opacity="0.18"/>
-   </svg>`,
-)
-
-const logo = await sharp(LOGO, { density: 600 })
-  .resize({ width: 424, fit: 'inside' })
+const lockup = await sharp(LOCKUP)
+  .trim({ threshold: 12 })
+  .resize({
+    width: W - MARGIN * 2,
+    height: H - MARGIN * 2,
+    fit: 'inside',
+  })
   .png()
   .toBuffer()
 
-const { height: logoHeight } = await sharp(logo).metadata()
+const { width, height } = await sharp(lockup).metadata()
 
-await sharp(PHOTO)
-  .resize(W, H, { fit: 'cover', position: 'attention' })
+await sharp({
+  create: { width: W, height: H, channels: 3, background: CREAM },
+})
   .composite([
-    { input: warmth, top: 0, left: 0 },
-    { input: panel, top: 0, left: 0 },
-    { input: logo, top: Math.round((H - logoHeight) / 2), left: 68 },
+    {
+      input: lockup,
+      top: Math.round((H - height) / 2),
+      left: Math.round((W - width) / 2),
+    },
   ])
   .png({ compressionLevel: 9, palette: true })
   .toFile(OUT)

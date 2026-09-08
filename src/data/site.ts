@@ -2,6 +2,12 @@ export const site = {
   name: 'Leal Pavers',
   legalName: 'Leal Pavers LLC',
   url: 'https://www.lealpaversdesign.com',
+  /**
+   * Link previews are cached by URL, so bump the version whenever
+   * `public/og.png` changes or WhatsApp, Google and iMessage keep showing
+   * the old artwork.
+   */
+  ogImage: '/og.png?v=2',
   tagline: 'Transforming outdoor spaces',
   legacyTagline: 'Your space, our art',
   promise: 'Built on quality. Designed to last.',

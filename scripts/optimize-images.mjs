@@ -181,19 +181,9 @@ async function main() {
   for (const source of sources) {
     const rel = relative(SOURCE, source)
 
-    // The Open Graph image has to stay a PNG: WhatsApp and Facebook do not
-    // reliably render WebP previews. 1200x630 is the expected ratio.
-    if (rel === 'og.png') {
-      const target = join(PUBLIC, rel)
-      await sharp(source)
-        .resize(1200, 630, { fit: 'cover' })
-        .png({ compressionLevel: 9, palette: true })
-        .toFile(target)
-      before += (await stat(source)).size
-      after += (await stat(target)).size
-      console.log(`og.png -> 1200x630`)
-      continue
-    }
+    // The Open Graph image is composed by generate-og.mjs from this source,
+    // so it is neither converted to WebP nor copied across as-is.
+    if (rel === 'og.png') continue
 
     if (COVER_ONLY.test(rel)) continue
 
