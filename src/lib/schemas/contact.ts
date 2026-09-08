@@ -34,8 +34,13 @@ export const contactSchema = z.object({
     .trim()
     .max(2000, { message: 'Please keep it under 2000 characters.' })
     .optional(),
-  /** Honeypot: hidden from people, filled in by bots. Must stay empty. */
-  company: z.string().max(0).optional(),
+  /**
+   * Honeypot: hidden from people, filled in by bots. Deliberately NOT
+   * constrained here: the server action checks it and pretends the send
+   * worked, so the bot has no signal that it was caught. A `max(0)` would
+   * surface a validation error instead.
+   */
+  company: z.string().optional(),
 })
 
 export type ContactSchema = z.infer<typeof contactSchema>
