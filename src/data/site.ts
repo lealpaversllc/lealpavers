@@ -49,17 +49,17 @@ export const site = {
     ],
   },
 
-  // Canonical profile URLs: the share links carried `mibextid`/`igsh`
+  // Canonical profile URLs: the shared links carried `mibextid`/`stkn`/`utm_source`
   // tracking params, which are poor `sameAs` values for structured data.
   socials: [
     {
       name: 'Facebook',
-      href: 'https://www.facebook.com/share/1URRk2ER1E/',
+      href: 'https://www.facebook.com/share/1J8SNTPxgw/',
       icon: '/assets/icons/facebook.svg',
     },
     {
       name: 'Instagram',
-      href: 'https://www.instagram.com/lealpaversllc',
+      href: 'https://www.instagram.com/lealpaverslandscapllc',
       icon: '/assets/icons/instagram.webp',
     },
   ],
