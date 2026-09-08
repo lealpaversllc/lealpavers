@@ -1,7 +1,7 @@
 export const site = {
   name: 'Leal Pavers',
   legalName: 'Leal Pavers LLC',
-  url: 'https://lealpaversllc.com',
+  url: 'https://www.lealpaversllc.com',
   tagline: 'Transforming outdoor spaces',
   legacyTagline: 'Your space, our art',
   promise: 'Built on quality. Designed to last.',
