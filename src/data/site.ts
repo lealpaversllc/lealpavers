@@ -1,6 +1,6 @@
 export const site = {
   name: 'Leal Pavers',
-  legalName: 'Leal Pavers LLC',
+  legalName: 'Leal Pavers & Landscaping Design',
   url: 'https://www.lealpaversdesign.com',
   /**
    * Link previews are cached by URL, so bump the version whenever

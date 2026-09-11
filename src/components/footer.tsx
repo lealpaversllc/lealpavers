@@ -1,5 +1,6 @@
 import { BrandLogo } from '@/components/brand-logo'
 import { ContactInfo } from '@/components/contact-info'
+import { PrivacyPolicyDialog } from '@/components/privacy-policy-dialog'
 import { SocialLinks } from '@/components/social-links'
 import { site } from '@/data/site'
 
@@ -37,6 +38,9 @@ export function Footer() {
                   </a>
                 </li>
               ))}
+              <li>
+                <PrivacyPolicyDialog />
+              </li>
             </ul>
           </nav>
         </div>
