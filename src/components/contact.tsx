@@ -21,6 +21,12 @@ import { Textarea } from '@/components/ui/textarea'
 import { site } from '@/data/site'
 import { type ContactSchema, contactSchema } from '@/lib/schemas/contact'
 
+declare global {
+  interface Window {
+    dataLayer?: Record<string, unknown>[]
+  }
+}
+
 // shadcn's FormLabel turns red on error; on this red card that kills the
 // contrast, so keep the label white and let the message carry the error.
 const labelClass = 'text-white data-[error=true]:text-white'
@@ -60,6 +66,14 @@ export function Contact() {
     if (!result.ok) {
       toast.error(result.error, { duration: 4000 })
       return
+    }
+
+    // The agency's Google Ads conversion fires on this event, so it only
+    // counts leads that actually went out. The action reports a filled
+    // honeypot as ok to fool bots; keep those out of the conversions too.
+    if (!data.company) {
+      window.dataLayer = window.dataLayer || []
+      window.dataLayer.push({ event: 'lead_form_success' })
     }
 
     form.reset()
