@@ -5,8 +5,9 @@ import { site } from '@/data/site'
 import { cn } from '@/lib/utils'
 
 /**
- * "Contact" pill plus the free-quote phone line. Used by the header and the
- * about section, which previously carried two copies of this markup.
+ * "Get a free estimate" pill plus the free-quote phone line. Used by the
+ * header and the about section, which previously carried two copies of this
+ * markup.
  */
 export function CtaContact({
   size = 'default',
@@ -22,7 +23,7 @@ export function CtaContact({
       <Button asChild variant="accent" size={large ? 'pill-lg' : 'pill'}>
         <a href="#contact">
           <MessageSquareText aria-hidden />
-          Contact
+          GET A FREE ESTIMATE
         </a>
       </Button>
       <div className={cn('leading-tight', large ? 'text-lg' : 'text-sm')}>

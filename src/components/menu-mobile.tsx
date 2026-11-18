@@ -38,7 +38,7 @@ export function MenuMobile({
         <div className="space-y-8 pb-8">
           <Button asChild variant="accent" size="pill-lg" className="w-full">
             <a href="#contact" onClick={onNavigate}>
-              Get a free quote
+              GET A FREE ESTIMATE
             </a>
           </Button>
 
