@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react'
+
 import { cn } from '@/lib/utils'
 
 export function SectionHeading({
@@ -8,6 +10,7 @@ export function SectionHeading({
   tone = 'light',
   className,
   id,
+  action,
 }: {
   eyebrow?: string
   title: string
@@ -17,7 +20,21 @@ export function SectionHeading({
   tone?: 'light' | 'dark'
   className?: string
   id?: string
+  /** Rendered beside the title, wrapping below it when the row is too narrow. */
+  action?: ReactNode
 }) {
+  const heading = (
+    <h2
+      id={id}
+      className={cn(
+        'text-h2 font-bold',
+        tone === 'dark' ? 'text-white' : 'text-brand-800',
+      )}
+    >
+      {title}
+    </h2>
+  )
+
   return (
     <div
       className={cn(
@@ -36,15 +53,14 @@ export function SectionHeading({
           {eyebrow}
         </p>
       ) : null}
-      <h2
-        id={id}
-        className={cn(
-          'text-h2 font-bold',
-          tone === 'dark' ? 'text-white' : 'text-brand-800',
-        )}
-      >
-        {title}
-      </h2>
+      {action ? (
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+          {heading}
+          {action}
+        </div>
+      ) : (
+        heading
+      )}
       {lead ? (
         <p
           className={cn(
