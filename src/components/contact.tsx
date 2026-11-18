@@ -18,6 +18,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { site } from '@/data/site'
 import { type ContactSchema, contactSchema } from '@/lib/schemas/contact'
 
 // shadcn's FormLabel turns red on error; on this red card that kills the
@@ -94,8 +95,14 @@ export function Contact() {
             What should I do to get a free quote?
           </h2>
           <p className="mt-2 text-base text-white/85">
-            It&apos;s very simple! Fill out the form below and one of our
-            experts will contact you.
+            It&apos;s very simple! Fill out the form below to connect with our
+            experts, or call or text us at{' '}
+            <a
+              href={site.phone.href}
+              className="ease-soft text-accent-300 font-semibold whitespace-nowrap transition-colors duration-200 hover:text-white"
+            >
+              <span aria-hidden>☎</span> {site.phone.display}
+            </a>
           </p>
 
           <Form {...form}>
