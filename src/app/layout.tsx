@@ -6,6 +6,7 @@ import type { Metadata, Viewport } from 'next'
 import { Archivo, Inter } from 'next/font/google'
 
 import { Footer } from '@/components/footer'
+import { GoogleTag } from '@/components/google-tag'
 import { Header } from '@/components/header'
 import { StructuredData } from '@/components/structured-data'
 import { Toaster } from '@/components/ui/sonner'
@@ -113,6 +114,7 @@ export default function RootLayout({
         <StructuredData />
         <SpeedInsights />
         <Analytics />
+        <GoogleTag />
       </body>
     </html>
   )
