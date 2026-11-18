@@ -1,4 +1,5 @@
 import { ServiceCard } from '@/components/service-card'
+import { Button } from '@/components/ui/button'
 import { SectionHeading } from '@/components/ui/section-heading'
 import { allServices, materials, services } from '@/data/services'
 
@@ -10,6 +11,18 @@ export function Service() {
           eyebrow="What we do"
           title="Our Services"
           lead="From a single repair to a full driveway rebuild — installed by a crew that has been doing this for over ten years."
+          action={
+            // Desktop already has this CTA in the header; phones only get it
+            // behind the menu, so surface it here.
+            <Button
+              asChild
+              variant="accent"
+              size="pill"
+              className="h-9 px-4 text-xs md:hidden"
+            >
+              <a href="#contact">GET A FREE ESTIMATE</a>
+            </Button>
+          }
         />
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
