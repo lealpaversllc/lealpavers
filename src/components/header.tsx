@@ -80,7 +80,10 @@ export function Header() {
             </ul>
           </nav>
 
-          <CtaContact className="hidden md:flex" />
+          <CtaContact
+            className="hidden md:flex md:flex-nowrap"
+            detailsClassName="hidden lg:block"
+          />
 
           <button
             type="button"
